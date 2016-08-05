@@ -1,5 +1,6 @@
 package Modules.Application.Models;
 
+import Modules.Translations.Models.Translation;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -8,6 +9,8 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 import Modules.Database.Models.SessionFactory;
 
+import java.util.Enumeration;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 /**
@@ -37,7 +40,9 @@ public class Application extends javafx.application.Application {
      */
     public void start(Stage primaryStage) throws Exception {
         try {
-            ResourceBundle resources = ResourceBundle.getBundle("Modules/Application/Resources/Languages/application");
+
+            ResourceBundle resources = new Translation().getResourceBundle("Modules/Application/Resources/Languages/application");
+
             VBox page = FXMLLoader.load(getClass().getResource("/Modules/Application/Resources/Views/ApplicationView.fxml"), resources);
             Scene scene = new Scene(page);
             primaryStage.setScene(scene);

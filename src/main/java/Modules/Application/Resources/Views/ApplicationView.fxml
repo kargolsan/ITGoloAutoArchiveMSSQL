@@ -10,8 +10,16 @@
       <children>
             <TabPane focusTraversable="false" layoutX="14.0" layoutY="14.0" prefHeight="342.0" prefWidth="604.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <tabs>
-                <fx:include source="Partials/TasksView.fxml" />
-                <fx:include source="Partials/LogsView.fxml" />
+                <Tab text="%view.application.tabs.tasks">
+                  <content>
+                    <fx:include source="Partials/TasksView.fxml" />
+                  </content>
+                </Tab>
+                <Tab text="%view.application.tabs.logs">
+                  <content>
+                    <fx:include source="Partials/LogsView.fxml" />
+                  </content>
+                </Tab>
               </tabs>
             </TabPane>
       </children>

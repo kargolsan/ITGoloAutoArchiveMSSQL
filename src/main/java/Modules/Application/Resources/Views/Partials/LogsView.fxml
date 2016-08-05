@@ -3,8 +3,27 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Tab text="%view.application.tabs.logs" xmlns:fx="http://javafx.com/fxml/1" >
-    <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-    </content>
-</Tab>
+<AnchorPane  minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Modules.Application.Controllers.LogsController">
+    <children>
+        <TableView fx:id="tableLogsView" GridPane.columnIndex="0" GridPane.rowIndex="1">
+            <columns>
+                <TableColumn text="%view.application.tabs.tasks.table.id">
+                </TableColumn>
+                <TableColumn text="%view.application.tabs.tasks.table.server_address">
+                </TableColumn>
+                <TableColumn text="%view.application.tabs.tasks.table.instance">
+                </TableColumn>
+                <TableColumn text="%view.application.tabs.tasks.table.database_name">
+                </TableColumn>
+                <TableColumn text="%view.application.tabs.tasks.table.username">
+                </TableColumn>
+                <TableColumn text="%view.application.tabs.tasks.table.password">
+                </TableColumn>
+                <TableColumn text="%view.application.tabs.tasks.table.path_save">
+                </TableColumn>
+                <TableColumn text="%view.application.tabs.tasks.table.path_save_reserve">
+                </TableColumn>
+            </columns>
+        </TableView>
+    </children>
+</AnchorPane>
