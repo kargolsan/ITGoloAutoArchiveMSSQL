@@ -50,7 +50,7 @@ public class Application extends javafx.application.Application {
             primaryStage.setTitle("FXML is Simple");
             primaryStage.show();
         } catch (Exception ex) {
-            logger.fatal(ex.getMessage());
+            logger.fatal(ex);
         }
     }
 

@@ -3,27 +3,21 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane  minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Modules.Application.Controllers.TasksController">
-    <children>
-        <TableView fx:id="tableTasksView" GridPane.columnIndex="0" GridPane.rowIndex="1">
-            <columns>
-                <TableColumn text="%view.application.tabs.tasks.table.id">
-                </TableColumn>
-                <TableColumn text="%view.application.tabs.tasks.table.server_address">
-                </TableColumn>
-                <TableColumn text="%view.application.tabs.tasks.table.instance">
-                </TableColumn>
-                <TableColumn text="%view.application.tabs.tasks.table.database_name">
-                </TableColumn>
-                <TableColumn text="%view.application.tabs.tasks.table.username">
-                </TableColumn>
-                <TableColumn text="%view.application.tabs.tasks.table.password">
-                </TableColumn>
-                <TableColumn text="%view.application.tabs.tasks.table.path_save">
-                </TableColumn>
-                <TableColumn text="%view.application.tabs.tasks.table.path_save_reserve">
-                </TableColumn>
-            </columns>
-        </TableView>
-    </children>
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="320.0" prefWidth="463.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Modules.Application.Controllers.TasksController">
+   <children>
+         <TableView fx:id="tableTasks" layoutX="146.0" layoutY="86.0" prefHeight="320.0" prefWidth="463.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+             <columns>
+                 <TableColumn fx:id="id" prefWidth="75.0" text="%view.application.tabs.tasks.table.id" />
+                 <TableColumn fx:id="server" prefWidth="75.0" text="%view.application.tabs.tasks.table.server_address" />
+                 <TableColumn fx:id="instance" prefWidth="75.0" text="%view.application.tabs.tasks.table.instance" />
+                 <TableColumn fx:id="database" prefWidth="75.0" text="%view.application.tabs.tasks.table.database_name" />
+                 <TableColumn fx:id="userName" prefWidth="75.0" text="%view.application.tabs.tasks.table.username" />
+                 <TableColumn fx:id="password" prefWidth="75.0" text="%view.application.tabs.tasks.table.password" />
+                 <TableColumn fx:id="savePath" prefWidth="75.0" text="%view.application.tabs.tasks.table.path_save" />
+                 <TableColumn fx:id="savePathReserve" prefWidth="75.0" text="%view.application.tabs.tasks.table.path_save_reserve" />
+                 <TableColumn fx:id="daysOfWeek" prefWidth="75.0" text="%view.application.tabs.tasks.table.days" />
+                 <TableColumn fx:id="hours" prefWidth="75.0" text="%view.application.tabs.tasks.table.hours" />
+             </columns>
+         </TableView>
+   </children>
 </AnchorPane>
