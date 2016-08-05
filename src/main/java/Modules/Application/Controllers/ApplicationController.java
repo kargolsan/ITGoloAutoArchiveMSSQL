@@ -2,6 +2,8 @@ package Modules.Application.Controllers;
 
 import java.net.URL;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import java.util.ResourceBundle;
@@ -16,7 +18,6 @@ public class ApplicationController implements Initializable {
     @FXML
     private Button button;
 
-
     /**
      * Called to initialize a controller after its root element has been
      * completely processed.
@@ -30,7 +31,7 @@ public class ApplicationController implements Initializable {
     }
 
     @FXML
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
+    public void helloClicked() {
+        System.out.println("Hello!");
     }
 }
