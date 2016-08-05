@@ -5,6 +5,15 @@ apply plugin: 'java'
 
 sourceCompatibility = 1.5
 
+sourceSets {
+    main {
+        resources {
+            srcDirs = ["src/main/java", "src/main/resources"]
+            includes = ["**/*.fxml","**/*.xml"]
+        }
+    }
+}
+
 repositories {
     mavenCentral()
 }
