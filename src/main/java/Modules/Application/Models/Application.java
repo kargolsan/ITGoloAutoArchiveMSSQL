@@ -8,6 +8,8 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 import Modules.Database.Models.SessionFactory;
 
+import java.util.ResourceBundle;
+
 /**
  * Created by Karol Golec on 05.08.2016.
  */
@@ -35,7 +37,8 @@ public class Application extends javafx.application.Application {
      */
     public void start(Stage primaryStage) throws Exception {
         try {
-            VBox page = FXMLLoader.load(getClass().getResource("/Modules/Application/Resources/Views/ApplicationView.fxml"));
+            ResourceBundle resources = ResourceBundle.getBundle("Modules/Application/Resources/Languages/application");
+            VBox page = FXMLLoader.load(getClass().getResource("/Modules/Application/Resources/Views/ApplicationView.fxml"), resources);
             Scene scene = new Scene(page);
             primaryStage.setScene(scene);
             primaryStage.setResizable(false);

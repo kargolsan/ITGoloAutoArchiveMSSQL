@@ -2,6 +2,9 @@ import Modules.Application.Models.Application;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 /**
  * Created by Karol Golec on 03.08.2016.
  */

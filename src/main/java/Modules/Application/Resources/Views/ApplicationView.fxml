@@ -33,12 +33,12 @@
       <children>
             <TabPane focusTraversable="false" layoutX="14.0" layoutY="14.0" prefHeight="342.0" prefWidth="604.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <tabs>
-                <Tab text="Tasks">
+                <Tab text="%view.application.tabs.tasks">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                   </content>
                 </Tab>
-                <Tab text="Logs">
+                <Tab text="%view.application.tabs.logs">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                   </content>
