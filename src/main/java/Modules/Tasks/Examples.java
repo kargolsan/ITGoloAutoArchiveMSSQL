@@ -15,8 +15,8 @@ import java.util.Set;
  * Created by Karol Golec on 05.08.2016.
  */
 public class Examples {
-    private void examples(){
-                DayOfWeekEntity dayOfWeek1 = new DayOfWeekEntity();
+    public void examples(){
+        DayOfWeekEntity dayOfWeek1 = new DayOfWeekEntity();
         dayOfWeek1.setDayOfWeek(1);
         DayOfWeekEntity dayOfWeek2 = new DayOfWeekEntity();
         dayOfWeek2.setDayOfWeek(2);
@@ -50,11 +50,11 @@ public class Examples {
 
         taskFactory.add(task);
 
-        TaskEntity taskUpdate = taskFactory.get(new Long(6));
-        System.out.println(taskUpdate.getId());
-        taskUpdate.setServer("eggdssdg");
+        //TaskEntity taskUpdate = taskFactory.get(new Long(6));
+        //System.out.println(taskUpdate.getId());
+        //taskUpdate.setServer("eggdssdg");
 
-        taskFactory.update(taskUpdate);
+        //taskFactory.update(taskUpdate);
 
         List<TaskEntity> tasks = taskFactory.getAll();
 
@@ -68,7 +68,5 @@ public class Examples {
                 System.out.println("Day: " + day.getDayOfWeek());
             }
         }
-
-        new SessionFactory().shutdown();
     }
 }

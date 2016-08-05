@@ -1,24 +1,23 @@
 package Modules.Application.Controllers;
 
-
-import Modules.Application.Models.TaskRow;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
-
 import java.net.URL;
+import javafx.fxml.FXML;
 import java.util.ResourceBundle;
+import javafx.fxml.Initializable;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TableColumn;
+import javafx.collections.ObservableList;
+import Modules.Application.Models.TaskRow;
+import Modules.Tasks.Models.TaskEntityToRow;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
  * Created by Karol Golec on 05.08.2016.
  */
 public class TasksController implements Initializable {
 
-    @FXML private TableView<TaskRow> tableTasks;
+    @FXML
+    private TableView<TaskRow> tableTasks;
     @FXML private TableColumn<TaskRow, Long> id;
     @FXML private TableColumn<TaskRow, String> server;
     @FXML private TableColumn<TaskRow, String> instance;
@@ -30,10 +29,15 @@ public class TasksController implements Initializable {
     @FXML private TableColumn<TaskRow, String> daysOfWeek;
     @FXML private TableColumn<TaskRow, String> hours;
 
-    public ObservableList<TaskRow> list = FXCollections.observableArrayList(
-            new TaskRow(new Long(1), "Server", "Instance", "Database", "Username", "Password", "Save path", "Save path reserve", "Days", "Hours"),
-            new TaskRow(new Long(2), "Server", "Instance", "Database", "Username", "Password", "Save path", "Save path reserve", "Days", "Hours")
-    );
+    public ObservableList<TaskRow> list;
+
+    /**
+     * Constructor of class
+     */
+    public TasksController() {
+        list = new TaskEntityToRow().getAll();
+    }
+
     /**
      * Called to initialize a controller after its root element has been
      * completely processed.
@@ -53,6 +57,7 @@ public class TasksController implements Initializable {
         savePathReserve.setCellValueFactory(new PropertyValueFactory<TaskRow, String>("savePathReserve"));
         daysOfWeek.setCellValueFactory(new PropertyValueFactory<TaskRow, String>("daysOfWeek"));
         hours.setCellValueFactory(new PropertyValueFactory<TaskRow, String>("hours"));
+
         tableTasks.setItems(list);
     }
 }

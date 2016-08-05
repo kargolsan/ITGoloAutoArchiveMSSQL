@@ -8,7 +8,7 @@
          <TableView fx:id="tableTasks" layoutX="146.0" layoutY="86.0" prefHeight="320.0" prefWidth="463.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
              <columns>
                  <TableColumn fx:id="id" prefWidth="75.0" text="%view.application.tabs.tasks.table.id" />
-                 <TableColumn fx:id="server" prefWidth="75.0" text="%view.application.tabs.tasks.table.server_address" />
+                 <TableColumn fx:id="server" prefWidth="75.0" text="%view.application.tabs.tasks.table.server_address"></TableColumn>
                  <TableColumn fx:id="instance" prefWidth="75.0" text="%view.application.tabs.tasks.table.instance" />
                  <TableColumn fx:id="database" prefWidth="75.0" text="%view.application.tabs.tasks.table.database_name" />
                  <TableColumn fx:id="userName" prefWidth="75.0" text="%view.application.tabs.tasks.table.username" />
