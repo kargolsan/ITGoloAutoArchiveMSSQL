@@ -44,6 +44,10 @@ public class TaskEntity {
     @Column(name="SAVE_PATH", length = 400)
     private String savePath;
 
+    /** reserve path to save backup database */
+    @Column(name="SAVE_PATH_RESERVE", length = 400)
+    private String savePathReserve;
+
     /** days of week for auto backup of database */
     @OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
     @JoinTable(
@@ -167,6 +171,22 @@ public class TaskEntity {
      */
     public void setSavePath(String savePath) {
         this.savePath = savePath;
+    }
+
+    /**
+     * Get reservepath to save backup database
+     *
+     * @return reserve path to save backup database
+     */
+    public String getSavePathReserve() {
+        return savePathReserve;
+    }
+
+    /**
+     * Set reserve path to save backup database
+     */
+    public void setSavePathReserve(String savePathReserve) {
+        this.savePathReserve = savePathReserve;
     }
 
     /**

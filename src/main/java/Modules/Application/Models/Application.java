@@ -1,9 +1,9 @@
 package Modules.Application.Models;
 
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.StackPane;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 import Modules.Database.Models.SessionFactory;
@@ -35,9 +35,10 @@ public class Application extends javafx.application.Application {
      */
     public void start(Stage primaryStage) throws Exception {
         try {
-            StackPane page = FXMLLoader.load(getClass().getResource("/Modules/Application/Views/ApplicationView.fxml"));
+            VBox page = FXMLLoader.load(getClass().getResource("/Modules/Application/Resources/Views/ApplicationView.fxml"));
             Scene scene = new Scene(page);
             primaryStage.setScene(scene);
+            primaryStage.setResizable(false);
             primaryStage.setTitle("FXML is Simple");
             primaryStage.show();
         } catch (Exception ex) {

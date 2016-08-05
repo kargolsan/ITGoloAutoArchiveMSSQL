@@ -1,4 +1,4 @@
-package Modules.Database;
+package Modules.Tasks;
 
 import Modules.Database.Models.SessionFactory;
 import Modules.Tasks.Interfaces.ITaskFactory;
@@ -43,6 +43,7 @@ public class Examples {
         task.setUserName("userName");
         task.setPassword("password");
         task.setSavePath("save_Path");
+        task.setSavePathReserve("save_Path");
 
         task.setDaysOfWeek(daysOfWeekOfTask);
         task.setHours(hoursOfTask);
