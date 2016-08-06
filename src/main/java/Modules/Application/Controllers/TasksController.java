@@ -1,14 +1,21 @@
 package Modules.Application.Controllers;
 
 import java.net.URL;
+
+import Modules.Tasks.Interfaces.IDayOfWeekConverter;
+import Modules.Tasks.Interfaces.IHourConverter;
+import Modules.Tasks.Interfaces.ITaskFactory;
+import Modules.Tasks.Models.*;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import java.util.ResourceBundle;
+
+import java.util.*;
+
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
 import javafx.collections.ObservableList;
 import Modules.Application.Models.TaskRow;
-import Modules.Tasks.Models.TaskEntityToRow;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
@@ -35,7 +42,8 @@ public class TasksController implements Initializable {
      * Constructor of class
      */
     public TasksController() {
-        list = new TaskEntityToRow().getAll();
+        ITaskFactory taskFactory = new TaskFactory();
+        list = new TaskEntityConverter().entitiesToRows(taskFactory.getAll());
     }
 
     /**
@@ -60,4 +68,5 @@ public class TasksController implements Initializable {
 
         tableTasks.setItems(list);
     }
+
 }

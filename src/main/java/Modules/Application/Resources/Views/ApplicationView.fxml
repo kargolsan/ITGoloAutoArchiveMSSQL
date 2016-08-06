@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox maxHeight="400.0" maxWidth="850.0" minHeight="400.0" minWidth="850.0" prefHeight="400.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Modules.Application.Controllers.ApplicationController">
+<VBox maxHeight="400.0" maxWidth="960.0" minHeight="400.0" minWidth="960.0" prefHeight="400.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Modules.Application.Controllers.ApplicationController">
   <children>
     <fx:include source="Partials/MenuView.fxml" />
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
@@ -13,6 +13,11 @@
                 <Tab text="%view.application.tabs.tasks">
                   <content>
                     <fx:include source="Partials/TasksView.fxml" />
+                  </content>
+                </Tab>
+                <Tab text="%view.application.tabs.tasks.table.add_task">
+                  <content>
+                    <fx:include source="Partials/AddTaskView.fxml" />
                   </content>
                 </Tab>
                 <Tab text="%view.application.tabs.logs">

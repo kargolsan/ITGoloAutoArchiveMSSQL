@@ -47,7 +47,7 @@ public class Application extends javafx.application.Application {
             Scene scene = new Scene(page);
             primaryStage.setScene(scene);
             primaryStage.setResizable(false);
-            primaryStage.setTitle("FXML is Simple");
+            primaryStage.setTitle("SUR AutoArchive MSSQL");
             primaryStage.show();
         } catch (Exception ex) {
             logger.fatal(ex);

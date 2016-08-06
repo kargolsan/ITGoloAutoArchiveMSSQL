@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="637.0" prefWidth="820.0" stylesheets="@/Modules/Application/Resources/Assets/Css/tasks.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Modules.Application.Controllers.AddTaskController">
+    <children>
+      <HBox alignment="CENTER" prefHeight="280.0" prefWidth="694.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="30.0">
+         <children>
+              <GridPane alignment="CENTER" hgap="10.0" prefHeight="212.0" prefWidth="346.0" vgap="10.0">
+                  <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="223.0" minWidth="10.0" prefWidth="176.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="269.0" minWidth="10.0" prefWidth="210.0" />
+                  </columnConstraints>
+                  <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  </rowConstraints>
+                  <children>
+                      <Label text="%view.application.tabs.tasks.table.server_address" GridPane.halignment="RIGHT" />
+                      <TextField maxWidth="150.0" GridPane.columnIndex="1" />
+                      <Label text="%view.application.tabs.tasks.table.instance" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+                      <TextField maxWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                      <Label text="%view.application.tabs.tasks.table.database_name" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+                      <TextField maxWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                      <Label text="%view.application.tabs.tasks.table.username" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
+                      <Label text="%view.application.tabs.tasks.table.password" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
+                      <Label text="%view.application.tabs.tasks.table.path_save" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
+                      <TextField maxWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                      <TextField maxWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                      <TextField maxWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                      <TextField maxWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                      <Label text="%view.application.tabs.tasks.table.path_save_reserve" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
+                  </children>
+              </GridPane>
+            <GridPane alignment="CENTER" hgap="10.0" prefHeight="212.0" prefWidth="346.0" vgap="10.0">
+               <children>
+                  <Label text="%view.application.tabs.tasks.table.server_address" GridPane.halignment="RIGHT" />
+                  <TextField maxWidth="150.0" GridPane.columnIndex="1" />
+                  <Label text="%view.application.tabs.tasks.table.instance" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+                  <TextField maxWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label text="%view.application.tabs.tasks.table.database_name" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+                  <TextField maxWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label text="%view.application.tabs.tasks.table.username" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
+                  <Label text="%view.application.tabs.tasks.table.password" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
+                  <Label text="%view.application.tabs.tasks.table.path_save" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
+                  <TextField maxWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <TextField maxWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <TextField maxWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <TextField maxWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <Label text="%view.application.tabs.tasks.table.path_save_reserve" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
+               </children>
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="223.0" minWidth="10.0" prefWidth="176.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="269.0" minWidth="10.0" prefWidth="210.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+         </children>
+      </HBox>
+        <VBox alignment="BOTTOM_RIGHT" layoutX="137.0" layoutY="492.0" prefHeight="61.0" prefWidth="436.0">
+            <children>
+                <Button id="btnAdd" fx:id="btnAdd" mnemonicParsing="false" onAction="#addTask" text="%view.application.tabs.tasks.table.add_task" />
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

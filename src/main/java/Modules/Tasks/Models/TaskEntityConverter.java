@@ -7,24 +7,22 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import Modules.Application.Models.TaskRow;
 import Modules.Tasks.Interfaces.ITaskFactory;
-import Modules.Tasks.Interfaces.ITaskEntityToRow;
+import Modules.Tasks.Interfaces.ITaskEntityConverter;
 
 /**
  * Created by Karol Golec on 05.08.2016.
  */
-public class TaskEntityToRow implements ITaskEntityToRow {
+public class TaskEntityConverter implements ITaskEntityConverter {
 
     /**
      * Get all task rows by tasks entities
      *
+     * @param tasks also entities
      * @return observable list with task rows for table view in fxml file
      */
-    public ObservableList<TaskRow> getAll() {
+    public ObservableList<TaskRow> entitiesToRows(List<TaskEntity> tasks) {
         ObservableList<TaskRow> list;
         list = FXCollections.observableArrayList();
-        ITaskFactory taskFactory = new TaskFactory();
-        List<TaskEntity> tasks = taskFactory.getAll();
-
         for(TaskEntity task : tasks){
             String stringDays = daysOfWeekToString(task.getDaysOfWeek());
             String stringHours = hoursToString(task.getHours());
