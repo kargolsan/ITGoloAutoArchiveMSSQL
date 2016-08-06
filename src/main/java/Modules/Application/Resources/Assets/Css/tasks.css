@@ -1,0 +1,11 @@
+#tableTasks #id.table-cell {
+    -fx-alignment: CENTER;
+}
+
+#tableTasks #daysOfWeek.table-cell {
+    -fx-alignment: CENTER;
+}
+
+#tableTasks #hours.table-cell {
+    -fx-alignment: CENTER;
+}
