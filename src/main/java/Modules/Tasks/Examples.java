@@ -1,15 +1,13 @@
 package Modules.Tasks;
 
-import Modules.Database.Models.SessionFactory;
-import Modules.Tasks.Interfaces.ITaskFactory;
-import Modules.Tasks.Models.DayOfWeekEntity;
-import Modules.Tasks.Models.HourEntity;
-import Modules.Tasks.Models.TaskEntity;
-import Modules.Tasks.Models.TaskFactory;
-
-import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
+import java.util.List;
+import java.util.HashSet;
+import Modules.Tasks.Models.TaskEntity;
+import Modules.Tasks.Models.HourEntity;
+import Modules.Tasks.Models.TaskFactory;
+import Modules.Tasks.Models.DayOfWeekEntity;
+import Modules.Tasks.Interfaces.ITaskFactory;
 
 /**
  * Created by Karol Golec on 05.08.2016.

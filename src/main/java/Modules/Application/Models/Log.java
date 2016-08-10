@@ -1,8 +1,5 @@
 package Modules.Application.Models;
 
-import java.util.Date;
-import org.apache.logging.log4j.Level;
-
 /**
  * Created by Karol Golec on 10.08.2016.
  */

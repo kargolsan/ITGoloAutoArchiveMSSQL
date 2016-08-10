@@ -1,7 +1,7 @@
 package Modules.MSSQL;
 
-import Modules.MSSQL.Interfaces.IDBConnection;
 import Modules.MSSQL.Models.DBConnection;
+import Modules.MSSQL.Interfaces.IDBConnection;
 
 /**
  * Created by Karol Golec on 05.08.2016.

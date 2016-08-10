@@ -1,11 +1,10 @@
 package Modules.MSSQL.Controllers;
 
-import Modules.MSSQL.Interfaces.IBackupDBController;
-import Modules.MSSQL.Models.BackupDB;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import java.util.concurrent.*;
+import Modules.MSSQL.Models.BackupDB;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import Modules.MSSQL.Interfaces.IBackupDBController;
 
 /**
  * Created by Karol Golec on 10.08.2016.
@@ -32,7 +31,7 @@ public class BackupDBController implements IBackupDBController {
                 logger.error(e.getMessage());
                 e.printStackTrace();
             }
-        }, 0, 1, TimeUnit.MINUTES);
+        }, 0, 20, TimeUnit.MINUTES);
     }
 
     /**

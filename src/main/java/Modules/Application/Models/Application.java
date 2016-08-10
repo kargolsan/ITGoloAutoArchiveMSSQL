@@ -1,19 +1,16 @@
 package Modules.Application.Models;
 
-import Modules.MSSQL.Controllers.BackupDBController;
-import Modules.MSSQL.Interfaces.IBackupDBController;
-import Modules.Translations.Models.Translation;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.VBox;
+import java.util.ResourceBundle;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 import Modules.Database.Models.SessionFactory;
-
-import java.util.Enumeration;
-import java.util.Locale;
-import java.util.ResourceBundle;
+import Modules.Translations.Models.Translation;
+import Modules.MSSQL.Interfaces.IBackupDBController;
+import Modules.MSSQL.Controllers.BackupDBController;
 
 /**
  * Created by Karol Golec on 05.08.2016.

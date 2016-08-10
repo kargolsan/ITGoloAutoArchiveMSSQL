@@ -1,9 +1,7 @@
 package Modules.Tasks.Models;
 
-import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
-import java.io.Serializable;
+import org.hibernate.annotations.GenericGenerator;
 
 /**
  * Created by Karol Golec on 03.08.2016.

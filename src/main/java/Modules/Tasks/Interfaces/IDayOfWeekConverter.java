@@ -1,9 +1,8 @@
 package Modules.Tasks.Interfaces;
 
-import Modules.Tasks.Models.DayOfWeekEntity;
-
-import java.util.List;
 import java.util.Set;
+import java.util.List;
+import Modules.Tasks.Models.DayOfWeekEntity;
 
 /**
  * Created by Karol Golec on 06.08.2016.

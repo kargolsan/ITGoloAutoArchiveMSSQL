@@ -1,8 +1,7 @@
 package Modules.Tasks.Interfaces;
 
-import Modules.Tasks.Models.TaskEntity;
-
 import java.util.List;
+import Modules.Tasks.Models.TaskEntity;
 
 /**
  * Created by Karol Golec on 03.08.2016.

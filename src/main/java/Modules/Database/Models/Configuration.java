@@ -1,8 +1,8 @@
 package Modules.Database.Models;
 
-import Modules.Tasks.Models.DayOfWeekEntity;
 import Modules.Tasks.Models.HourEntity;
 import Modules.Tasks.Models.TaskEntity;
+import Modules.Tasks.Models.DayOfWeekEntity;
 
 /**
  * Created by Karol Golec on 03.08.2016.

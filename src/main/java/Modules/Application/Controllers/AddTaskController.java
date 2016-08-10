@@ -2,26 +2,23 @@ package Modules.Application.Controllers;
 
 import java.net.URL;
 import java.util.Set;
-import java.util.List;
-
-import Modules.Alerts.Models.Alert;
-import Modules.Application.Models.TaskRow;
-import Modules.Tasks.Interfaces.ITaskFactory;
-import Modules.Tasks.Models.*;
-import Modules.Translations.Models.Translation;
 import javafx.fxml.FXML;
-import java.util.ArrayList;
+import Modules.Tasks.Models.*;
 import javafx.event.ActionEvent;
 import java.util.ResourceBundle;
 import Modules.DateTime.DateTime;
 import javafx.fxml.Initializable;
+import Modules.Alerts.Models.Alert;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import Modules.Application.Models.TaskRow;
+import Modules.Tasks.Interfaces.ITaskFactory;
 import Modules.Tasks.Interfaces.IHourConverter;
+import Modules.Translations.Models.Translation;
 import Modules.Tasks.Interfaces.IDayOfWeekConverter;
-import javafx.scene.control.TextField;
 
 /**
  * Created by Karol Golec on 06.08.2016.

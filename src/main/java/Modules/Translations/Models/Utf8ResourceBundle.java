@@ -1,13 +1,11 @@
 package Modules.Translations.Models;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-import java.io.UnsupportedEncodingException;
-import java.util.Enumeration;
 import java.util.Locale;
-import java.util.PropertyResourceBundle;
+import java.util.Enumeration;
 import java.util.ResourceBundle;
+import java.util.PropertyResourceBundle;
+import java.io.UnsupportedEncodingException;
+
 /**
  * Created by Karol Golec on 05.08.2016.
  */

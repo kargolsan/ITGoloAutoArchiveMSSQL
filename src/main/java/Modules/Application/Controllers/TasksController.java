@@ -1,23 +1,17 @@
 package Modules.Application.Controllers;
 
-import java.net.URL;
-
-import Modules.Tasks.Interfaces.IDayOfWeekConverter;
-import Modules.Tasks.Interfaces.IHourConverter;
-import Modules.Tasks.Interfaces.ITaskFactory;
-import Modules.Tasks.Models.*;
-import Modules.Translations.Models.Translation;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-
 import java.util.*;
-
-import javafx.fxml.Initializable;
+import java.net.URL;
+import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import Modules.Tasks.Models.*;
+import javafx.stage.WindowEvent;
+import javafx.fxml.Initializable;
 import javafx.collections.ObservableList;
 import Modules.Application.Models.TaskRow;
+import Modules.Tasks.Interfaces.ITaskFactory;
+import Modules.Translations.Models.Translation;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.WindowEvent;
 
 /**
  * Created by Karol Golec on 05.08.2016.

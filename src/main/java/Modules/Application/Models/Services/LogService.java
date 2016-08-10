@@ -1,11 +1,11 @@
 package Modules.Application.Models.Services;
 
-import Modules.Application.Controllers.LogsController;
-import Modules.Application.Interfaces.ILogService;
-import Modules.Application.Models.Log;
 import Modules.DateTime.DateTime;
-import org.apache.logging.log4j.LogManager;
+import Modules.Application.Models.Log;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import Modules.Application.Interfaces.ILogService;
+import Modules.Application.Controllers.LogsController;
 
 /**
  * Created by Karol Golec on 10.08.2016.

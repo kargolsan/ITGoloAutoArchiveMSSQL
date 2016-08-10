@@ -1,12 +1,10 @@
 package Modules.Tasks.Models;
 
-import Modules.DateTime.DateTime;
-import Modules.Tasks.Interfaces.IDayOfWeekConverter;
-import Modules.Tasks.Interfaces.IHourConverter;
-
-import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
+import java.util.List;
+import java.util.HashSet;
+import Modules.DateTime.DateTime;
+import Modules.Tasks.Interfaces.IHourConverter;
 
 /**
  * Created by Karol Golec on 06.08.2016.

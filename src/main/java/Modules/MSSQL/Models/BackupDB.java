@@ -1,17 +1,15 @@
 package Modules.MSSQL.Models;
 
-import Modules.Application.Interfaces.ILogService;
-import Modules.Application.Models.Services.LogService;
+import java.util.Set;
+import java.util.List;
 import Modules.DateTime.DateTime;
-import Modules.Tasks.Interfaces.ITaskFactory;
-import Modules.Tasks.Models.DayOfWeekEntity;
 import Modules.Tasks.Models.HourEntity;
 import Modules.Tasks.Models.TaskEntity;
 import Modules.Tasks.Models.TaskFactory;
-
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import Modules.Tasks.Models.DayOfWeekEntity;
+import Modules.Tasks.Interfaces.ITaskFactory;
+import Modules.Application.Interfaces.ILogService;
+import Modules.Application.Models.Services.LogService;
 
 /**
  * Created by Karol Golec on 10.08.2016.

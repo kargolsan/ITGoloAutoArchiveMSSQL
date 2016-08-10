@@ -1,12 +1,10 @@
 package Modules.Tasks.Models;
 
 import java.util.*;
-
 import Modules.DateTime.DateTime;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import Modules.Application.Models.TaskRow;
-import Modules.Tasks.Interfaces.ITaskFactory;
 import Modules.Tasks.Interfaces.ITaskEntityConverter;
 
 /**

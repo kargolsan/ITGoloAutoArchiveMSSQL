@@ -2,13 +2,13 @@ package Modules.Tasks.Models;
 
 import java.util.List;
 import org.hibernate.Session;
+import javax.persistence.Query;
 import org.hibernate.Transaction;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 import Modules.Tasks.Interfaces.ITaskFactory;
 import Modules.Database.Models.SessionFactory;
 import Modules.Database.Interfaces.ISessionFactory;
-import javax.persistence.Query;
 
 /**
  * Created by Karol Golec on 03.08.2016.

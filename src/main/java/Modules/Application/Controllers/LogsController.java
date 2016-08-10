@@ -1,27 +1,18 @@
 package Modules.Application.Controllers;
 
 import java.net.URL;
-
-import Modules.Application.Interfaces.ILogService;
-import Modules.Application.Models.Log;
-import Modules.Application.Models.Services.LogService;
-import Modules.Application.Models.TaskRow;
-import Modules.DateTime.DateTime;
-import javafx.beans.value.ChangeListener;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-
-import java.util.Date;
+import javafx.util.Callback;
+import javafx.event.ActionEvent;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
+import Modules.Application.Models.Log;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TableColumn;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.util.Callback;
-import org.apache.logging.log4j.Level;
 
 /**
  * Created by Karol Golec on 05.08.2016.

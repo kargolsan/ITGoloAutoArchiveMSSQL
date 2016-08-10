@@ -1,10 +1,9 @@
 package Modules.Tasks.Interfaces;
 
-import Modules.Application.Models.TaskRow;
+import java.util.List;
 import Modules.Tasks.Models.TaskEntity;
 import javafx.collections.ObservableList;
-
-import java.util.List;
+import Modules.Application.Models.TaskRow;
 
 /**
  * Created by Karol Golec on 05.08.2016.
