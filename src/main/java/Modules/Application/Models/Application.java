@@ -1,5 +1,6 @@
 package Modules.Application.Models;
 
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.fxml.FXMLLoader;
@@ -53,6 +54,7 @@ public class Application extends javafx.application.Application {
             primaryStage.setScene(scene);
             primaryStage.setResizable(false);
             primaryStage.setTitle(title);
+            primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/Modules/Application/Resources/Assets/Images/app_icon.png")));
             primaryStage.show();
             IBackupDBController backupDB = new BackupDBController();
             backupDB.run();
