@@ -1,5 +1,7 @@
 package Modules.Application.Models;
 
+import Modules.MSSQL.Controllers.BackupDBController;
+import Modules.MSSQL.Interfaces.IBackupDBController;
 import Modules.Translations.Models.Translation;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -49,6 +51,9 @@ public class Application extends javafx.application.Application {
             primaryStage.setResizable(false);
             primaryStage.setTitle("SUR AutoArchive MSSQL");
             primaryStage.show();
+
+            IBackupDBController backupDB = new BackupDBController();
+            backupDB.run();
         } catch (Exception ex) {
             logger.fatal(ex);
         }
@@ -67,6 +72,8 @@ public class Application extends javafx.application.Application {
      * </p>
      */
     public void stop() throws Exception {
+        IBackupDBController backupDB = new BackupDBController();
+        backupDB.stop();
         new SessionFactory().shutdown();
     }
 }

@@ -1,43 +1,81 @@
 package Modules.MSSQL.Models;
 
-import Modules.MSSQL.Interfaces.IBackupDB;
-import javafx.application.Platform;
-import javafx.concurrent.Task;
+import Modules.Application.Interfaces.ILogService;
+import Modules.Application.Models.Services.LogService;
+import Modules.DateTime.DateTime;
+import Modules.Tasks.Interfaces.ITaskFactory;
+import Modules.Tasks.Models.DayOfWeekEntity;
+import Modules.Tasks.Models.HourEntity;
+import Modules.Tasks.Models.TaskEntity;
+import Modules.Tasks.Models.TaskFactory;
 
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Karol Golec on 10.08.2016.
  */
-public class BackupDB implements IBackupDB {
+public class BackupDB {
+
+    /** last hour of backup */
+    static Integer lastHourBackup = 0;
+
+    /** Service of log to table view */
+    ILogService log = new LogService();
 
     /**
-     * Run auto backup DB
+     * Backup Databases from tasks
+     *
+     * @throws Exception
      */
+    public void backup() throws Exception{
 
-    public void run() {
+        ITaskFactory taskFactory = new TaskFactory();
+        List<TaskEntity> tasks = taskFactory.getAll();
 
-        ExecutorService executorService = Executors.newSingleThreadExecutor();
+        for (TaskEntity task : tasks){
 
-        executorService.submit(()-> {
-            for (Integer i=0 ; i < 10 ; i++){
-                try {
-                    System.out.println(i);
-                    Thread.sleep(1000);
-                    Platform.runLater(new Runnable() {
-                        @Override
-                        public void run() {
+            if (!currentDayIsForBackup(task)) continue;
 
-                        }
-                    });
+            if (!currentHourIsForBackup(task)) continue;
 
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+            log.addInfo("Can backup hour");
+        }
+    }
+
+    /**
+     * Check is task has been runner in current day
+     *
+     * @param task
+     * @return true if task has current day
+     */
+    private Boolean currentDayIsForBackup(TaskEntity task){
+        Set<DayOfWeekEntity> days = task.getDaysOfWeek();
+
+        for (DayOfWeekEntity day : days){
+            if (DateTime.getCurrentNumberDayInWeek() == day.getDayOfWeek()){
+                return true;
             }
-        });
+        }
+        return false;
+    }
+
+    /**
+     * Check is task has been runner in current hour
+     *
+     * @param task
+     * @return true if task has current hour
+     */
+    private Boolean currentHourIsForBackup(TaskEntity task){
+        Set<HourEntity> hours = task.getHours();
+
+        for (HourEntity hour : hours){
+            if (DateTime.getCurrentNumberHour() == hour.getHour() && lastHourBackup != hour.getHour()){
+                lastHourBackup = hour.getHour();
+                return true;
+            }
+        }
+        return false;
     }
 }

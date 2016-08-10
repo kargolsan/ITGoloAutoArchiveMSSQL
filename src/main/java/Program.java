@@ -1,11 +1,9 @@
 import Modules.Application.Models.Application;
-import Modules.MSSQL.Interfaces.IBackupDB;
-import Modules.MSSQL.Models.BackupDB;
+import Modules.Database.Models.SessionFactory;
+import Modules.MSSQL.Interfaces.IBackupDBController;
+import Modules.MSSQL.Controllers.BackupDBController;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import java.util.Locale;
-import java.util.ResourceBundle;
 
 /**
  * Created by Karol Golec on 03.08.2016.
@@ -23,8 +21,6 @@ public class Program {
      * @param args
      */
     public static void main(String[] args) {
-        IBackupDB backupDB = new BackupDB();
-        backupDB.run();
-        Application.launch(Application.class, args);
+       Application.launch(Application.class, args);
     }
 }

@@ -58,12 +58,7 @@ public class LogsController implements Initializable {
      */
     @FXML
     public void clear(ActionEvent event){
-        ILogService log = new LogService();
-        log.addSuccess("successwewewe");
-        log.addError("errorwweew");
-        log.addWarning("warningwweew");
-        log.addInfo("infowweew");
-        log.add("normal");
+        listLogs.clear();
     }
 
     /**
@@ -77,6 +72,11 @@ public class LogsController implements Initializable {
                         super.updateItem(item, empty);
 
                         if (empty) return;
+
+                        getStyleClass().remove("success");
+                        getStyleClass().remove("error");
+                        getStyleClass().remove("warning");
+                        getStyleClass().remove("info");
 
                         switch(item.getLevel()){
                             case "success":

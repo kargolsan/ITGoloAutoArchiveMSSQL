@@ -5,11 +5,9 @@ import org.apache.logging.log4j.Logger;
 
 import java.text.DateFormat;
 import java.text.DateFormatSymbols;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
 /**
  * Created by Karol Golec on 05.08.2016.
@@ -91,6 +89,24 @@ public class DateTime {
         }
 
         return null;
+    }
+
+    /**
+     * Get current number of day in week
+     *
+     * @return number of current day in week
+     */
+    public static Integer getCurrentNumberDayInWeek(){
+        return Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
+    }
+
+    /**
+     * Get current number of hour
+     *
+     * @return number of current hour
+     */
+    public static Integer getCurrentNumberHour(){
+        return Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
     }
 
     /**

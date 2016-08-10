@@ -22,7 +22,7 @@ public class Configuration {
                 .setProperty("hibernate.connection.url", "jdbc:hsqldb:file:database/database;shutdown=true")
                 .setProperty("hibernate.connection.username", "AutoArchive")
                 .setProperty("hibernate.connection.password", "AutoArchive")
-                .setProperty("hibernate.connection.pool_size", "1")
+                .setProperty("hibernate.connection.pool_size", "2")
                 .setProperty("hibernate.show_sq", "true")
                 .setProperty("hibernate.hbm2ddl.auto", "update")
                 .setProperty("hibernate.current_session_context_class", "thread")
