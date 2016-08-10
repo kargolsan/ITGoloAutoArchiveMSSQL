@@ -5,6 +5,8 @@ import javafx.scene.Scene;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.VBox;
 import java.util.ResourceBundle;
+import Modules.Trays.Models.Tray;
+import Modules.Trays.Interfaces.ITray;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 import Modules.Database.Models.SessionFactory;
@@ -39,16 +41,19 @@ public class Application extends javafx.application.Application {
      */
     public void start(Stage primaryStage) throws Exception {
         try {
-
+            String title = "SUR AutoArchive MSSQL";
             ResourceBundle resources = new Translation().getResourceBundle("Modules/Application/Resources/Languages/application");
 
             VBox page = FXMLLoader.load(getClass().getResource("/Modules/Application/Resources/Views/ApplicationView.fxml"), resources);
             Scene scene = new Scene(page);
+            ITray tray = new Tray();
+            tray.setIcon("src/main/java/Modules/Application/Resources/Assets/Images/app_icon.png");
+            tray.setTitle(title);
+            tray.include(primaryStage);
             primaryStage.setScene(scene);
             primaryStage.setResizable(false);
-            primaryStage.setTitle("SUR AutoArchive MSSQL");
+            primaryStage.setTitle(title);
             primaryStage.show();
-
             IBackupDBController backupDB = new BackupDBController();
             backupDB.run();
         } catch (Exception ex) {
