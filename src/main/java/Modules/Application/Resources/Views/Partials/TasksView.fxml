@@ -19,6 +19,13 @@
                 <TableColumn id="daysOfWeek" fx:id="daysOfWeek" editable="false" prefWidth="75.0" text="%view.application.tabs.tasks.table.days" />
                 <TableColumn id="hours" fx:id="hours" editable="false" prefWidth="75.0" text="%view.application.tabs.tasks.table.hours" />
             </columns>
+         <contextMenu>
+            <ContextMenu onShowing="#showingContextMenu">
+              <items>
+                <MenuItem fx:id="ctxMenuDeleteTask" mnemonicParsing="false" onAction="#deleteTask" text="%view.application.tabs.tasks.table.context_menu.delete_task" />
+              </items>
+            </ContextMenu>
+         </contextMenu>
         </TableView>
     </children>
 </AnchorPane>

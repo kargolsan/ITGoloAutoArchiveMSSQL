@@ -1,4 +1,6 @@
 import Modules.Application.Models.Application;
+import Modules.MSSQL.Interfaces.IBackupDB;
+import Modules.MSSQL.Models.BackupDB;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -21,6 +23,8 @@ public class Program {
      * @param args
      */
     public static void main(String[] args) {
+        IBackupDB backupDB = new BackupDB();
+        backupDB.run();
         Application.launch(Application.class, args);
     }
 }

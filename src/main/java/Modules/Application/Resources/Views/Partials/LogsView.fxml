@@ -1,31 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
 <?import javafx.collections.FXCollections?>
-<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Modules.Application.Controllers.LogsController">
-    <children>
-        <TableView fx:id="tableLogsView" GridPane.columnIndex="0" GridPane.rowIndex="1">
-            <columns>
-                <TableColumn text="%view.application.tabs.tasks.table.id" fx:id="itemId">
-                </TableColumn>
-                <TableColumn text="%view.application.tabs.tasks.table.server_address" fx:id="itemServerAddress">
-                </TableColumn>
-                <TableColumn text="%view.application.tabs.tasks.table.instance" fx:id="itemInstance">
-                </TableColumn>
-                <TableColumn text="%view.application.tabs.tasks.table.database_name" fx:id="itemDatabaseName">
-                </TableColumn>
-                <TableColumn text="%view.application.tabs.tasks.table.username" fx:id="itemUsername">
-                </TableColumn>
-                <TableColumn text="%view.application.tabs.tasks.table.password" fx:id="itemPassword">
-                </TableColumn>
-                <TableColumn text="%view.application.tabs.tasks.table.path_save" fx:id="itemPathSave">
-                </TableColumn>
-                <TableColumn text="%view.application.tabs.tasks.table.path_save_reserve" fx:id="itemPathSaveReserve">
-                </TableColumn>
-            </columns>
 
-        </TableView>
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="350.0" prefWidth="485.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" stylesheets="@/Modules/Application/Resources/Assets/Css/logs.css" fx:controller="Modules.Application.Controllers.LogsController">
+    <children>
+      <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+              <TableView fx:id="tableLogs">
+                  <columns>
+                      <TableColumn id="created_at" fx:id="itemCreatedAt" editable="false" prefWidth="150.0" text="%view.application.tabs.logs.create_at"/>
+                      <TableColumn id="level" fx:id="itemLevel" editable="false" text="%view.application.tabs.logs.level"/>
+                      <TableColumn id="message" fx:id="itemMessage" editable="false" prefWidth="400.0" text="%view.application.tabs.logs.message"/>
+                  </columns>
+              </TableView>
+            <Button mnemonicParsing="false" onAction="#clear" text="%view.application.tabs.logs.clear" />
+         </children>
+      </VBox>
     </children>
 </AnchorPane>

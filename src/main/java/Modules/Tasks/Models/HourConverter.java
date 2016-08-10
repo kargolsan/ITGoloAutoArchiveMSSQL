@@ -31,7 +31,7 @@ public class HourConverter implements IHourConverter {
                 hour.setHour(hourInteger);
                 hoursOfTask.add(hour);
             }
-            System.out.println(hourInteger);
+
         }
         return hoursOfTask;
     }

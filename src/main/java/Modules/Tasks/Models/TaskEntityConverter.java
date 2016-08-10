@@ -48,7 +48,7 @@ public class TaskEntityConverter implements ITaskEntityConverter {
      * @param days from DayOfWeekEntity
      * @return string with days
      */
-    private String daysOfWeekToString(Set<DayOfWeekEntity> days){
+    public static String daysOfWeekToString(Set<DayOfWeekEntity> days){
         String stringDays = "";
 
         List<DayOfWeekEntity> listDays = new ArrayList<DayOfWeekEntity>(days);
@@ -78,7 +78,7 @@ public class TaskEntityConverter implements ITaskEntityConverter {
      * @param hours from HourEntity
      * @return string with hours
      */
-    private String hoursToString(Set<HourEntity> hours){
+    public static String hoursToString(Set<HourEntity> hours){
         String stringHours = "";
 
         List<HourEntity> listHours = new ArrayList<HourEntity>(hours);

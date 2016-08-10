@@ -3,7 +3,12 @@ package Modules.DateTime;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.text.DateFormat;
 import java.text.DateFormatSymbols;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 /**
@@ -69,6 +74,26 @@ public class DateTime {
     }
 
     /**
+     * Get number day in week by full name day
+     *
+     * @param fullNameDay example "Monday", "Wednesday"
+     * @return
+     */
+    public static Integer getNumberDayInWeekByFullName(String fullNameDay){
+        DateFormatSymbols symbols = new DateFormatSymbols(Locale.getDefault());
+
+        String[] dayNames = symbols.getWeekdays();
+
+        for(Integer i=1 ; i < 8 ; i++){
+            if(dayNames[i] == fullNameDay){
+                return i;
+            }
+        }
+
+        return null;
+    }
+
+    /**
      * Get integer of hour from string example "01:00"
      * @param hour
      * @return
@@ -81,5 +106,54 @@ public class DateTime {
         }
 
         return null;
+    }
+
+    /**
+     * Get full name all days in week to list
+     *
+     * @return
+     */
+    public static List<String> getFullNameDays(){
+
+        List<String> days = new ArrayList<String>();
+
+        DateFormatSymbols symbols = new DateFormatSymbols(Locale.getDefault());
+
+        String[] dayNames = symbols.getWeekdays();
+
+        for(Integer i=1 ; i < 8 ; i++){
+            days.add(dayNames[i]);
+        }
+
+        return days;
+    }
+
+    /**
+     * Get all hours to list in day
+     *
+     * @return list in all hours in day (example: {"00:00", "01:00" ... })
+     */
+    public static List<String> getAllHoursInDay(){
+        List<String> hours = new ArrayList<String>();
+
+        for(Integer i=0 ; i < 24 ; i++){
+            String prefix = "";
+            if (i < 10) prefix = "0";
+
+            String hour = String.format("%1$s%2$s:00", prefix, i);
+            hours.add(hour);
+        }
+        return hours;
+    }
+
+    /**
+     * Get date and time (format YYYY-MM-DD HH:MM:SS)
+     *
+     * @return
+     */
+    public static String getDateTime(){
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date = new Date();
+        return dateFormat.format(date);
     }
 }

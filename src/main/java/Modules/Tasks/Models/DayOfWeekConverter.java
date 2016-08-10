@@ -22,14 +22,13 @@ public class DayOfWeekConverter implements IDayOfWeekConverter {
 
         Set<DayOfWeekEntity> daysOfWeekOfTask = new HashSet<DayOfWeekEntity>();
         for(String dayAdded : days){
-            Integer numberDayInWeek = DateTime.getNumberDayInWeekByShortName(dayAdded);
+            Integer numberDayInWeek = DateTime.getNumberDayInWeekByFullName(dayAdded);
 
             if (numberDayInWeek != null){
                 DayOfWeekEntity dayOfWeek = new DayOfWeekEntity();
                 dayOfWeek.setDayOfWeek(numberDayInWeek);
                 daysOfWeekOfTask.add(dayOfWeek);
             }
-            System.out.println(numberDayInWeek);
         }
         return daysOfWeekOfTask;
     }

@@ -1,0 +1,15 @@
+.success {
+    -fx-background-color: #c9ffa5;
+}
+
+.error {
+    -fx-background-color: #ff9b9b;
+}
+
+.warning {
+    -fx-background-color: #ffe29b;
+}
+
+.info {
+    -fx-background-color: #d1fcff;
+}
