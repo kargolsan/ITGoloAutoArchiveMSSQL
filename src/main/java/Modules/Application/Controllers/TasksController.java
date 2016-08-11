@@ -2,6 +2,8 @@ package Modules.Application.Controllers;
 
 import java.util.*;
 import java.net.URL;
+
+import Modules.Application.Models.PasswordLabelCell;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import Modules.Tasks.Models.*;
@@ -62,6 +64,7 @@ public class TasksController implements Initializable {
         instance.setCellValueFactory(new PropertyValueFactory<TaskRow, String>("instance"));
         database.setCellValueFactory(new PropertyValueFactory<TaskRow, String>("database"));
         userName.setCellValueFactory(new PropertyValueFactory<TaskRow, String>("userName"));
+        password.setCellFactory(param -> new PasswordLabelCell());
         password.setCellValueFactory(new PropertyValueFactory<TaskRow, String>("password"));
         savePath.setCellValueFactory(new PropertyValueFactory<TaskRow, String>("savePath"));
         savePathReserve.setCellValueFactory(new PropertyValueFactory<TaskRow, String>("savePathReserve"));
@@ -102,3 +105,4 @@ public class TasksController implements Initializable {
         }
     }
 }
+

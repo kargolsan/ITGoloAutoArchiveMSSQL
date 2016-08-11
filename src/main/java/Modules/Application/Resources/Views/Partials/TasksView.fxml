@@ -13,7 +13,7 @@
                 <TableColumn id="instance" fx:id="instance" editable="false" prefWidth="100.0" text="%view.application.tabs.tasks.table.instance" />
                 <TableColumn id="database" fx:id="database" editable="false" prefWidth="100.0" text="%view.application.tabs.tasks.table.database_name" />
                 <TableColumn id="userName" fx:id="userName" editable="false" prefWidth="100.0" text="%view.application.tabs.tasks.table.username" />
-                <TableColumn id="password" fx:id="password" editable="false" prefWidth="100.0" text="%view.application.tabs.tasks.table.password" />
+                <TableColumn id="password"  fx:id="password" editable="false" prefWidth="100.0" text="%view.application.tabs.tasks.table.password" />
                 <TableColumn id="savePath" fx:id="savePath" editable="false" prefWidth="120.0" text="%view.application.tabs.tasks.table.path_save" />
                 <TableColumn id="savePathReserve" fx:id="savePathReserve" editable="false" prefWidth="120.0" text="%view.application.tabs.tasks.table.path_save_reserve" />
                 <TableColumn id="daysOfWeek" fx:id="daysOfWeek" editable="false" prefWidth="75.0" text="%view.application.tabs.tasks.table.days" />
