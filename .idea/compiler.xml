@@ -19,6 +19,8 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
+      <module name="ITGoloAutoArchiveMSSQL_main" target="1.8" />
+      <module name="ITGoloAutoArchiveMSSQL_test" target="1.8" />
       <module name="SURAutoArchiveMSSQL_main" target="1.8" />
       <module name="SURAutoArchiveMSSQL_test" target="1.8" />
     </bytecodeTargetLevel>

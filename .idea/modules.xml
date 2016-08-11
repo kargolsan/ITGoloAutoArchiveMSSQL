@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/GoloITAutoArchiveMSSQL.iml" filepath="$PROJECT_DIR$/.idea/modules/GoloITAutoArchiveMSSQL.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/GoloITAutoArchiveMSSQL_main.iml" filepath="$PROJECT_DIR$/.idea/modules/GoloITAutoArchiveMSSQL_main.iml" group="SURAutoArchiveMSSQL" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/GoloITAutoArchiveMSSQL_test.iml" filepath="$PROJECT_DIR$/.idea/modules/GoloITAutoArchiveMSSQL_test.iml" group="SURAutoArchiveMSSQL" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ITGoloAutoArchiveMSSQL.iml" filepath="$PROJECT_DIR$/.idea/modules/ITGoloAutoArchiveMSSQL.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ITGoloAutoArchiveMSSQL_main.iml" filepath="$PROJECT_DIR$/.idea/modules/ITGoloAutoArchiveMSSQL_main.iml" group="ITGoloAutoArchiveMSSQL" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ITGoloAutoArchiveMSSQL_test.iml" filepath="$PROJECT_DIR$/.idea/modules/ITGoloAutoArchiveMSSQL_test.iml" group="ITGoloAutoArchiveMSSQL" />
     </modules>
   </component>
 </project>

@@ -1,9 +1,10 @@
 package Modules.Application.Models;
 
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
+import java.util.Properties;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import java.util.ResourceBundle;
 import Modules.Trays.Models.Tray;
@@ -42,22 +43,28 @@ public class Application extends javafx.application.Application {
      */
     public void start(Stage primaryStage) throws Exception {
         try {
-            String title = "SUR AutoArchive MSSQL";
+            Properties prop = new Properties();
+            prop.load(getClass().getClassLoader().getResourceAsStream("build.properties"));
+
             ResourceBundle resources = new Translation().getResourceBundle("Modules/Application/Resources/Languages/application");
 
             VBox page = FXMLLoader.load(getClass().getResource("/Modules/Application/Resources/Views/ApplicationView.fxml"), resources);
             Scene scene = new Scene(page);
+
             ITray tray = new Tray();
             tray.setIcon("src/main/java/Modules/Application/Resources/Assets/Images/app_icon.png");
-            tray.setTitle(title);
+            tray.setTitle(prop.getProperty("title"));
             tray.include(primaryStage);
+
             primaryStage.setScene(scene);
             primaryStage.setResizable(false);
-            primaryStage.setTitle(title);
+            primaryStage.setTitle(String.format("%1$s - v%2$s", prop.getProperty("title"), prop.getProperty("version")));
             primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/Modules/Application/Resources/Assets/Images/app_icon.png")));
             primaryStage.show();
+
             IBackupDBController backupDB = new BackupDBController();
             backupDB.run();
+
         } catch (Exception ex) {
             logger.fatal(ex);
         }
