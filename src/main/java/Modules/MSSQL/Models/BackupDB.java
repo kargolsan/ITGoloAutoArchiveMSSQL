@@ -1,23 +1,21 @@
 package Modules.MSSQL.Models;
 
-import java.io.File;
 import java.sql.*;
 import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.List;
 import Modules.DateTime.DateTime;
-import Modules.MSSQL.Interfaces.IDBConnection;
+import org.apache.logging.log4j.Logger;
 import Modules.Tasks.Models.HourEntity;
 import Modules.Tasks.Models.TaskEntity;
 import Modules.Tasks.Models.TaskFactory;
+import org.apache.logging.log4j.LogManager;
 import Modules.Tasks.Models.DayOfWeekEntity;
 import Modules.Tasks.Interfaces.ITaskFactory;
+import Modules.MSSQL.Interfaces.IDBConnection;
+import Modules.Translations.Models.Translation;
 import Modules.Application.Interfaces.ILogService;
 import Modules.Application.Models.Services.LogService;
-import Modules.Translations.Models.Translation;
-import com.sun.org.apache.xpath.internal.operations.Bool;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 /**
  * Created by Karol Golec on 10.08.2016.
@@ -148,33 +146,14 @@ public class BackupDB {
      * @return true if backup it has been completed successfully, false hasn't been completed
      */
     private Boolean backupDBToFile(TaskEntity task){
-        Connection conn = null;
-        String url = String.format("jdbc:jtds:sqlserver://%1$s;instance=%2$s;DatabaseName=%3$s",
-                task.getServer(),
-                task.getInstance(),
-                task.getDatabase()
-        );
-        String driver = "net.sourceforge.jtds.jdbc.Driver";
-
-        String fileName = String.format("%1$s_%2$s_%3$s.ape",
-                trans.getString("file.archive"),
-                task.getDatabase(),
-                DateTime.getDateTimeForFile()
-        );
+        Connection conn;
 
         try {
-            Class.forName(driver);
-            conn = DriverManager.getConnection(url, task.getUserName(), task.getPassword());
-
-            Statement stmt = conn.createStatement();
-            String strSelect = String.format("BACKUP DATABASE %1$s TO DISK = '%2$s\\%3$s' ",
-                    task.getDatabase(),
-                    task.getSavePath(),
-                    fileName
-            );
-            stmt.execute(strSelect);
+            Class.forName("net.sourceforge.jtds.jdbc.Driver");
+            conn = DriverManager.getConnection(genConnectionString(task), task.getUserName(), task.getPassword());
+            Statement statement = conn.createStatement();
+            statement.execute(genCommandSQLBackup(task));
             conn.close();
-
             return true;
         } catch (SQLException ex) {
             logger.error(ex.getMessage());
@@ -183,5 +162,47 @@ public class BackupDB {
             logger.error(ex.getMessage());
             return false;
         }
+    }
+
+    /**
+     * Get new name for wile of backup database
+     *
+     * @param task - TaskEntity
+     * @return new name for file
+     */
+    private String genFileName(TaskEntity task) {
+        return String.format("%1$s_%2$s_%3$s.ape",
+                trans.getString("file.archive"),
+                task.getDatabase(),
+                DateTime.getDateTimeForFile()
+        );
+    }
+
+    /**
+     * Generate connection string for backup database
+     *
+     * @param task - TaskEntity
+     * @return connection string
+     */
+    private String genConnectionString(TaskEntity task){
+        return String.format("jdbc:jtds:sqlserver://%1$s;instance=%2$s;DatabaseName=%3$s",
+                task.getServer(),
+                task.getInstance(),
+                task.getDatabase()
+        );
+    }
+
+    /**
+     * Generate command SQL for backup database
+     *
+     * @param task - TaskEntity
+     * @return command of sql to backup database
+     */
+    private String genCommandSQLBackup(TaskEntity task){
+        return String.format("BACKUP DATABASE %1$s TO DISK = '%2$s\\%3$s' ",
+                task.getDatabase(),
+                task.getSavePath(),
+                genFileName(task)
+        );
     }
 }

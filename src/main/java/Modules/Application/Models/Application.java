@@ -2,6 +2,8 @@ package Modules.Application.Models;
 
 import javafx.stage.Stage;
 import javafx.scene.Scene;
+
+import java.io.IOException;
 import java.util.Properties;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.image.Image;
@@ -26,6 +28,26 @@ public class Application extends javafx.application.Application {
      */
     private static Logger logger = LogManager.getLogger();
 
+    /** properties of build */
+    Properties propertiesBuild;
+
+    /** Resource bundle of translations */
+    ResourceBundle trans;
+
+    /**
+     * Constructor of class
+     */
+    public Application(){
+        propertiesBuild = new Properties();
+        try {
+            propertiesBuild.load(getClass().getClassLoader().getResourceAsStream("build.properties"));
+        } catch (IOException ex) {
+            logger.fatal(ex.getMessage());
+        }
+
+         trans = new Translation().getResourceBundle("Modules/Application/Resources/Languages/application");
+    }
+
     /**
      * The main entry point for all JavaFX applications.
      * The start method is called after the init method has returned,
@@ -43,28 +65,15 @@ public class Application extends javafx.application.Application {
      */
     public void start(Stage primaryStage) throws Exception {
         try {
-            Properties prop = new Properties();
-            prop.load(getClass().getClassLoader().getResourceAsStream("build.properties"));
-
-            ResourceBundle resources = new Translation().getResourceBundle("Modules/Application/Resources/Languages/application");
-
-            VBox page = FXMLLoader.load(getClass().getResource("/Modules/Application/Resources/Views/ApplicationView.fxml"), resources);
+            VBox page = FXMLLoader.load(getClass().getResource("/Modules/Application/Resources/Views/ApplicationView.fxml"), trans);
             Scene scene = new Scene(page);
-
-            ITray tray = new Tray();
-            tray.setIcon("src/main/java/Modules/Application/Resources/Assets/Images/app_icon.png");
-            tray.setTitle(prop.getProperty("title"));
-            tray.include(primaryStage);
-
+            setTray(primaryStage, propertiesBuild.getProperty("title"));
             primaryStage.setScene(scene);
             primaryStage.setResizable(false);
-            primaryStage.setTitle(String.format("%1$s - v%2$s", prop.getProperty("title"), prop.getProperty("version")));
+            primaryStage.setTitle(String.format("%1$s - v%2$s", propertiesBuild.getProperty("title"), propertiesBuild.getProperty("version")));
             primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/Modules/Application/Resources/Assets/Images/app_icon.png")));
             primaryStage.show();
-
-            IBackupDBController backupDB = new BackupDBController();
-            backupDB.run();
-
+            rubAutoBackupDB();
         } catch (Exception ex) {
             logger.fatal(ex);
         }
@@ -83,8 +92,37 @@ public class Application extends javafx.application.Application {
      * </p>
      */
     public void stop() throws Exception {
+        stopAutoBackupDB();
+        new SessionFactory().shutdown();
+    }
+
+    /**
+     * Run auto archive for database
+     */
+    private void rubAutoBackupDB(){
+        IBackupDBController backupDB = new BackupDBController();
+        backupDB.run();
+    }
+
+    /**
+     * Stop auto archive for database
+     */
+    private void stopAutoBackupDB(){
         IBackupDBController backupDB = new BackupDBController();
         backupDB.stop();
-        new SessionFactory().shutdown();
+    }
+
+    /**
+     * Set tray for the application
+     *
+     * @param primaryStage of the main view
+     * @param title for view of application
+     */
+    private void setTray(Stage primaryStage, String title)
+    {
+        ITray tray = new Tray();
+        tray.setIcon("src/main/java/Modules/Application/Resources/Assets/Images/app_icon.png");
+        tray.setTitle(title);
+        tray.include(primaryStage);
     }
 }
