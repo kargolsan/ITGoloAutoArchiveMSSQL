@@ -170,4 +170,15 @@ public class DateTime {
         Date date = new Date();
         return dateFormat.format(date);
     }
+
+    /**
+     * Get date and time with format for file (format YYYYMMDD_HHMM)
+     *
+     * @return string
+     */
+    public static String getDateTimeForFile(){
+        DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmm");
+        Date date = new Date();
+        return dateFormat.format(date);
+    }
 }

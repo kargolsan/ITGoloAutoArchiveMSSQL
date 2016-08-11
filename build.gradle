@@ -30,6 +30,11 @@ dependencies {
 
 jar {
     manifest {
-        attributes "Main-Class": "Program.main"
+        attributes 'Implementation-Title': 'ITGolo AutoArchive MSSQL',
+                'Implementation-Version': version,
+                "Main-Class": "Program"
     }
+    baseName = project.name
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
 }
+

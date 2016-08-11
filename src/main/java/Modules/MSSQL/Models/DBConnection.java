@@ -32,10 +32,8 @@ public class DBConnection implements IDBConnection {
             return true;
 
         } catch (SQLException e) {
-            e.printStackTrace();
             return false;
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
             return false;
         }
     }
