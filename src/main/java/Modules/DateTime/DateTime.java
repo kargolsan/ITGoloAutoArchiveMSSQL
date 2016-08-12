@@ -172,12 +172,12 @@ public class DateTime {
     }
 
     /**
-     * Get date and time with format for file (format YYYYMMDD_HHMM)
+     * Get date and time with format for file (format YYYYMMDD_HHMMSS)
      *
      * @return string
      */
     public static String getDateTimeForFile(){
-        DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmm");
+        DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");
         Date date = new Date();
         return dateFormat.format(date);
     }
