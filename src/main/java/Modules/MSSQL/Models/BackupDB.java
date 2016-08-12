@@ -7,7 +7,10 @@ import java.util.Set;
 import java.util.List;
 import Modules.DateTime.DateTime;
 import Modules.Files.Interfaces.ICompression;
+import Modules.Files.Interfaces.IOperations;
 import Modules.Files.Models.Compression;
+import Modules.Files.Models.Operations;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.apache.logging.log4j.Logger;
 import Modules.Tasks.Models.HourEntity;
 import Modules.Tasks.Models.TaskEntity;
@@ -150,7 +153,8 @@ public class BackupDB {
      */
     private Boolean backupDBToFile(TaskEntity task){
         Connection conn;
-        String pathFile = String.format("%1$s\\%2$s",task.getSavePath(), genFileName(task, "ape"));
+        String fileApe = genFileName(task, "ape");
+        String pathFile = String.format("%1$s\\%2$s",task.getSavePath(), fileApe);
         String pathFileZip = String.format("%1$s\\%2$s",task.getSavePath(), genFileName(task, "zip"));
 
         try {
@@ -160,7 +164,10 @@ public class BackupDB {
             statement.execute(genCommandSQLBackup(task, pathFile));
             conn.close();
 
-            compressionBackup(task, pathFile, pathFileZip);
+            if(compressionBackup(task, pathFile, pathFileZip, fileApe)){
+                IOperations fileOperations = new Operations();
+                fileOperations.delete(pathFile);
+            }
 
             return true;
         } catch (SQLException ex) {
@@ -223,14 +230,18 @@ public class BackupDB {
      * @param task - EntityTask
      * @param pathFile with the backup
      * @param pathFileZip for the compression file with backup
+     * @param fileInsideZip
+     * @return true if file has been compressed, false if can not be compressed
      */
-    private void compressionBackup(TaskEntity task, String pathFile, String pathFileZip){
+    private Boolean compressionBackup(TaskEntity task, String pathFile, String pathFileZip, String fileInsideZip){
         ICompression compression = new Compression();
         try {
-            compression.toZip(pathFile, pathFileZip);
+            compression.toZip(pathFile, pathFileZip, fileInsideZip);
+            return true;
         } catch (IOException ex) {
             log.addWarning(String.format(trans.getString("file.can_not_compress_file"), task.getId(), ex.getMessage()));
             logger.warn(ex.getMessage());
+            return false;
         }
     }
 }

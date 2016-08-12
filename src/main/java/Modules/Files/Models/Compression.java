@@ -1,15 +1,13 @@
 package Modules.Files.Models;
 
-import Modules.Files.Interfaces.ICompression;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.zip.ZipEntry;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.util.zip.ZipOutputStream;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import Modules.Files.Interfaces.ICompression;
 
 /**
  * Created by Karol Golec on 12.08.2016.
@@ -29,14 +27,15 @@ public class Compression implements ICompression {
      *
      * @param filePath path to file for compression
      * @param zipPath path with compression zip file
+     * @param fileNameInsideZip
      * @return true if compression has success status, false if compression has'nt success status
      * @throws IOException
      */
-    public Boolean toZip(String filePath, String zipPath) throws IOException {
+    public Boolean toZip(String filePath, String zipPath, String fileNameInsideZip) throws IOException {
 
             FileOutputStream fos = new FileOutputStream(zipPath);
             ZipOutputStream zos = new ZipOutputStream(fos);
-            ZipEntry ze= new ZipEntry("spy.log");
+            ZipEntry ze= new ZipEntry(fileNameInsideZip);
             zos.putNextEntry(ze);
             FileInputStream in = new FileInputStream(filePath);
 
