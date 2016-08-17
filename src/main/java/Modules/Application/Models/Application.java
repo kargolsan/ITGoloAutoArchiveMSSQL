@@ -121,7 +121,7 @@ public class Application extends javafx.application.Application {
     private void setTray(Stage primaryStage, String title)
     {
         ITray tray = new Tray();
-        tray.setIcon("src/main/java/Modules/Application/Resources/Assets/Images/app_icon.png");
+        tray.setIcon("/Modules/Application/Resources/Assets/Images/app_icon.png");
         tray.setTitle(title);
         tray.include(primaryStage);
     }

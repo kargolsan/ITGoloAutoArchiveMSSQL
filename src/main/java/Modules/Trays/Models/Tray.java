@@ -2,6 +2,8 @@ package Modules.Trays.Models;
 
 import java.awt.*;
 import javafx.stage.Stage;
+
+import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
 import java.awt.event.ActionListener;
@@ -50,7 +52,6 @@ public class Tray implements ITray {
         }
 
         SystemTray sTray = SystemTray.getSystemTray();
-        Image image = Toolkit.getDefaultToolkit().getImage(pathTrayIcon);
 
         ActionListener listenerShow = method -> {
             Platform.runLater(new Runnable() {
@@ -78,7 +79,10 @@ public class Tray implements ITray {
         popup.add(showItem);
         popup.add(exitItem);
 
-        TrayIcon icon = new TrayIcon(image, title, popup);
+        URL url = System.class.getResource(pathTrayIcon);
+        Image img = Toolkit.getDefaultToolkit().getImage(url);
+
+        TrayIcon icon = new TrayIcon(img, title, popup);
         icon.setImageAutoSize(true);
         try {
             sTray.add(icon);
