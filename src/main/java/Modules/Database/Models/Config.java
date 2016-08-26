@@ -7,7 +7,7 @@ import Modules.Tasks.Models.DayOfWeekEntity;
 /**
  * Created by Karol Golec on 03.08.2016.
  */
-public class Configuration {
+public class Config {
 
     /**
      * Get configuration of hibernate

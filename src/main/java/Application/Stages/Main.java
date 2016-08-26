@@ -1,4 +1,4 @@
-package Modules.Application.Models;
+package Application.Stages;
 
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -13,7 +13,7 @@ import Modules.Trays.Models.Tray;
 import Modules.Trays.Interfaces.ITray;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
-import Modules.Database.Models.SessionFactory;
+import Modules.Database.Models.SessionService;
 import Modules.Translations.Models.Translation;
 import Modules.MSSQL.Interfaces.IBackupDBController;
 import Modules.MSSQL.Controllers.BackupDBController;
@@ -21,7 +21,7 @@ import Modules.MSSQL.Controllers.BackupDBController;
 /**
  * Created by Karol Golec on 05.08.2016.
  */
-public class Application extends javafx.application.Application {
+public class Main extends javafx.application.Application {
 
     /**
      * logger for this class
@@ -37,10 +37,10 @@ public class Application extends javafx.application.Application {
     /**
      * Constructor of class
      */
-    public Application(){
+    public Main(){
         propertiesBuild = new Properties();
         try {
-            propertiesBuild.load(getClass().getClassLoader().getResourceAsStream("build.properties"));
+            propertiesBuild.load(getClass().getClassLoader().getResourceAsStream("Application/Resources/Properties/application.properties"));
         } catch (IOException ex) {
             logger.fatal(ex.getMessage());
         }
@@ -93,7 +93,7 @@ public class Application extends javafx.application.Application {
      */
     public void stop() throws Exception {
         stopAutoBackupDB();
-        new SessionFactory().shutdown();
+        new SessionService().shutdown();
     }
 
     /**

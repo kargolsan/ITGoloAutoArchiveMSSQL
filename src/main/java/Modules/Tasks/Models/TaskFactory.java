@@ -7,9 +7,7 @@ import org.hibernate.Transaction;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 import Modules.Tasks.Interfaces.ITaskFactory;
-import Modules.Database.Models.SessionFactory;
-import Modules.Database.Interfaces.ISessionFactory;
-
+import Modules.Database.Models.SessionService;
 /**
  * Created by Karol Golec on 03.08.2016.
  */
@@ -26,8 +24,7 @@ public class TaskFactory implements ITaskFactory {
      */
     public TaskEntity add(TaskEntity task) {
 
-        ISessionFactory sessionFactory = new SessionFactory();
-        Session session = sessionFactory.getSessionFactory().openSession();
+        Session session = SessionService.getSession();
         Transaction transaction = null;
 
         try {
@@ -52,8 +49,7 @@ public class TaskFactory implements ITaskFactory {
      * @param TaskEntity task
      */
     public void update(TaskEntity task){
-        ISessionFactory sessionFactory = new SessionFactory();
-        Session session = sessionFactory.getSessionFactory().openSession();
+        Session session = SessionService.getSession();
         Transaction transaction = null;
 
         try {
@@ -80,8 +76,7 @@ public class TaskFactory implements ITaskFactory {
 
         boolean result = false;
 
-        ISessionFactory sessionFactory = new SessionFactory();
-        Session session = sessionFactory.getSessionFactory().openSession();
+        Session session = SessionService.getSession();
         Transaction transaction = null;
 
         try {
@@ -112,8 +107,7 @@ public class TaskFactory implements ITaskFactory {
 
         List<TaskEntity> tasks = null;
 
-        ISessionFactory sessionFactory = new SessionFactory();
-        Session session = sessionFactory.getSessionFactory().openSession();
+        Session session = SessionService.getSession();
         Transaction transaction = null;
 
         try {
@@ -144,8 +138,7 @@ public class TaskFactory implements ITaskFactory {
 
         TaskEntity task = null;
 
-        ISessionFactory sessionFactory = new SessionFactory();
-        Session session = sessionFactory.getSessionFactory().openSession();
+        Session session = SessionService.getSession();
         Transaction transaction = null;
 
         try {
