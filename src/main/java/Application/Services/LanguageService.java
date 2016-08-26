@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
  * Time: 18:02
  */
 public class LanguageService {
+
     /**
      * Get resource bundle
      *

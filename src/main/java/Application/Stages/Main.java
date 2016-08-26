@@ -93,7 +93,7 @@ public class Main extends javafx.application.Application {
      */
     public void stop() throws Exception {
         stopAutoBackupDB();
-        new SessionService().shutdown();
+        SessionService.close();
     }
 
     /**

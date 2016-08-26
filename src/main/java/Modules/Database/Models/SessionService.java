@@ -27,21 +27,39 @@ public class SessionService {
     private static ServiceRegistry serviceRegistry;
 
     /**
-     * Get session factory to connection with database
+     * Create session of database
+     * for application
      *
-     * @return session factory
-     * @throws LockFileDatabaseException if file with database is locking
+     * @throws LockFileDatabaseException if file of database is locking
      */
-    public static SessionFactory getSessionFactory() throws LockFileDatabaseException {
+    public static void createSession() throws LockFileDatabaseException {
+        try {
+                SessionFactoryBuild();
+        } catch (Exception e) {
+            if (hasLockDatabaseException(e)) {
+                throw new LockFileDatabaseException("File of database is locking.", e);
+            }
+        }
+    }
 
-        return sessionFactory;
+    /**
+     * Get session for transaction in database
+     *
+     * @return session
+     */
+    public static Session getSession() {
+        if (sessionFactory.getCurrentSession().isOpen()) {
+            return sessionFactory.getCurrentSession();
+        } else {
+            return sessionFactory.openSession();
+        }
     }
 
     /**
      * Close opened session factory
      * without display error, but put error to logs
      */
-    public void shutdown() {
+    public static void close() {
         try {
             if (sessionFactory != null) {
                 sessionFactory.close();
@@ -56,48 +74,26 @@ public class SessionService {
      * class with data connection to database
      */
     private static void SessionFactoryBuild() {
-            Configuration configuration = ConfigurationService.getConfigurationForHibernate();
+        if (sessionFactory == null) { return ;}
+        Configuration configuration = ConfigurationService.getConfigurationForHibernate();
 
-            serviceRegistry = new StandardServiceRegistryBuilder()
-                    .applySettings(configuration.getProperties())
-                    .build();
+        serviceRegistry = new StandardServiceRegistryBuilder()
+                .applySettings(configuration.getProperties())
+                .build();
 
-            sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+        sessionFactory = configuration.buildSessionFactory(serviceRegistry);
     }
 
-    public static Session getSession() {
-        if (sessionFactory.getCurrentSession().isOpen()) {
-            return sessionFactory.getCurrentSession();
-        } else {
-            return sessionFactory.openSession();
-        }
-    }
-
-    public static void createSession() throws LockFileDatabaseException {
-        try {
-            if (sessionFactory == null) {
-                SessionFactoryBuild();
-            }
-        } catch (Exception e){
-            if (hasLockDatabaseException(e)){
-                throw new LockFileDatabaseException("File of database is locking.", e);
-            }
-        }
-    }
-
-
-
-
-    public static Boolean hasLockDatabaseException(Exception error) {
-        try {
-            SQLException exception = (SQLException) error.getCause().getCause();
-            if (exception.getSQLState().contains("S1000")) {
-                return true;
-            }
-        } catch (NullPointerException  e) {
-            LogManager.getLogger().error(e.getMessage());
-        }
-        return false;
+    /**
+     * Check exception contains information
+     * about lock file of database
+     *
+     * @param e exception to check
+     * @return true if file of database is locking or false if it is not locking
+     */
+    public static Boolean hasLockDatabaseException(Exception e) {
+        SQLException exception = (SQLException) e.getCause().getCause();
+        return exception.getSQLState().contains("S1000");
     }
 
 }
