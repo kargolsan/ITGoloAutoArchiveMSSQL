@@ -1,6 +1,8 @@
 package Application.Stages;
 
 import Application.Services.LanguageService;
+import Application.Services.LoaderService;
+import javafx.application.Platform;
 import javafx.application.Preloader;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -57,6 +59,7 @@ public class Loader extends Preloader {
             stage.setScene(scene);
             stage.getIcons().add(new Image(getClass().getResourceAsStream(ICON)));
             stage.show();
+
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -1,8 +1,13 @@
 package Application.Services;
 
-import java.util.ResourceBundle;
 import Modules.Database.Models.SessionService;
 import Database.Exceptions.LockFileDatabaseException;
+import javafx.application.Platform;
+import javafx.beans.property.BooleanProperty;
+
+import java.util.ResourceBundle;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * Created by IntelliJ IDEA.
@@ -48,5 +53,15 @@ public class LoaderService {
             );
         }
         return false;
+    }
+
+    /**
+     * Load with loader asynchronous without run application
+     */
+    public static void load(){
+        String LANGUAGE = "Application/Resources/Languages/application";
+        if (!LoaderService.createSessionDatabase(LanguageService.getResourceBundle(LANGUAGE))) {
+            ApplicationService.terminate();
+        }
     }
 }

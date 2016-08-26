@@ -24,8 +24,7 @@ public class LoaderController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        if (! LoaderService.createSessionDatabase(resources)){
-            Platform.exit();
-        }
+
+
     }
 }

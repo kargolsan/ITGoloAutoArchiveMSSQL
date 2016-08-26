@@ -48,6 +48,9 @@ public class SessionService {
      * @return session
      */
     public static Session getSession() {
+        if (sessionFactory == null){
+            SessionFactoryBuild();
+        }
         if (sessionFactory.getCurrentSession().isOpen()) {
             return sessionFactory.getCurrentSession();
         } else {
@@ -74,7 +77,6 @@ public class SessionService {
      * class with data connection to database
      */
     private static void SessionFactoryBuild() {
-        if (sessionFactory == null) { return ;}
         Configuration configuration = ConfigurationService.getConfigurationForHibernate();
 
         serviceRegistry = new StandardServiceRegistryBuilder()

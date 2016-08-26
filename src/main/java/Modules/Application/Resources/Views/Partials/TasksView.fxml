@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="320.0" prefWidth="463.0" stylesheets="@/Modules/Application/Resources/Assets/Css/addTask.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Modules.Application.Controllers.TasksController">
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="320.0" prefWidth="463.0" stylesheets="@../../Assets/Css/addTask.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Modules.Application.Controllers.TasksController">
     <children>
         <TableView id="tableTasks" fx:id="tableTasks" focusTraversable="false" prefHeight="262.0" prefWidth="443.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
             <columns>

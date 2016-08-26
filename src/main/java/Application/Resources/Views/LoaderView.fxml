@@ -8,7 +8,7 @@
 
 <VBox id="root" alignment="CENTER" spacing="15.0" xmlns="http://javafx.com/javafx/8.0.91" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controllers.LoaderController">
     <children>
-      <Label id="title" text="ITGolo CarService" />
+      <Label id="title" text="ITGolo AutoArchive" />
     </children>
    <padding> 
       <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />

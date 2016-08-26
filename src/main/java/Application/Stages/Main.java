@@ -1,8 +1,11 @@
 package Application.Stages;
 
+import Application.Classes.Async;
+import Application.Services.ApplicationService;
+import Application.Services.LanguageService;
+import Application.Services.LoaderService;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
-
 import java.io.IOException;
 import java.util.Properties;
 import javafx.fxml.FXMLLoader;
@@ -23,21 +26,26 @@ import Modules.MSSQL.Controllers.BackupDBController;
  */
 public class Main extends javafx.application.Application {
 
+
     /**
      * logger for this class
      */
     private static Logger logger = LogManager.getLogger();
 
-    /** properties of build */
+    /**
+     * properties of build
+     */
     Properties propertiesBuild;
 
-    /** Resource bundle of translations */
+    /**
+     * Resource bundle of translations
+     */
     ResourceBundle trans;
 
     /**
      * Constructor of class
      */
-    public Main(){
+    public Main() {
         propertiesBuild = new Properties();
         try {
             propertiesBuild.load(getClass().getClassLoader().getResourceAsStream("Application/Resources/Properties/application.properties"));
@@ -45,48 +53,36 @@ public class Main extends javafx.application.Application {
             logger.fatal(ex.getMessage());
         }
 
-         trans = new Translation().getResourceBundle("Modules/Application/Resources/Languages/application");
+        trans = new Translation().getResourceBundle("Modules/Application/Resources/Languages/application");
     }
 
     /**
      * The main entry point for all JavaFX applications.
      * The start method is called after the init method has returned,
      * and after the system is ready for the application to begin running.
-     * <p>
-     * <p>
-     * NOTE: This method is called on the JavaFX Application Thread.
-     * </p>
      *
-     * @param primaryStage the primary stage for this application, onto which
+     * @param stage the primary stage for this application, onto which
      *                     the application scene can be set. The primary stage will be embedded in
      *                     the browser if the application was launched as an applet.
      *                     Applications may create other stages, if needed, but they will not be
      *                     primary stages and will not be embedded in the browser.
      */
-    public void start(Stage primaryStage) throws Exception {
-        try {
-            VBox page = FXMLLoader.load(getClass().getResource("/Modules/Application/Resources/Views/ApplicationView.fxml"), trans);
-            Scene scene = new Scene(page);
-            setTray(primaryStage, propertiesBuild.getProperty("title"));
-            primaryStage.setScene(scene);
-            primaryStage.setResizable(false);
-            primaryStage.setTitle(String.format("%1$s - v%2$s", propertiesBuild.getProperty("title"), propertiesBuild.getProperty("version")));
-            primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/Modules/Application/Resources/Assets/Images/app_icon.png")));
-            primaryStage.show();
-            rubAutoBackupDB();
-        } catch (Exception ex) {
-            logger.fatal(ex);
-        }
+    public void start(Stage stage) throws Exception {
+        new Async().run(()->{
+            LoaderService.load();
+        },()->{
+            createStage(stage);
+        });
     }
 
     /**
      * This method is called when the application should stop, and provides a
      * convenient place to prepare for application exit and destroy resources.
-     *
+     * <p>
      * <p>
      * The implementation of this method provided by the Application class does nothing.
      * </p>
-     *
+     * <p>
      * <p>
      * NOTE: This method is called on the JavaFX Application Thread.
      * </p>
@@ -99,7 +95,7 @@ public class Main extends javafx.application.Application {
     /**
      * Run auto archive for database
      */
-    private void rubAutoBackupDB(){
+    private void rubAutoBackupDB() {
         IBackupDBController backupDB = new BackupDBController();
         backupDB.run();
     }
@@ -107,7 +103,7 @@ public class Main extends javafx.application.Application {
     /**
      * Stop auto archive for database
      */
-    private void stopAutoBackupDB(){
+    private void stopAutoBackupDB() {
         IBackupDBController backupDB = new BackupDBController();
         backupDB.stop();
     }
@@ -116,13 +112,35 @@ public class Main extends javafx.application.Application {
      * Set tray for the application
      *
      * @param primaryStage of the main view
-     * @param title for view of application
+     * @param title        for view of application
      */
-    private void setTray(Stage primaryStage, String title)
-    {
+    private void setTray(Stage primaryStage, String title) {
         ITray tray = new Tray();
         tray.setIcon("/Modules/Application/Resources/Assets/Images/app_icon.png");
         tray.setTitle(title);
         tray.include(primaryStage);
+    }
+
+    /**
+     * Create stage of main
+     *
+     * @param stage of main
+     */
+    public void createStage(Stage stage){
+        try {
+            VBox page = FXMLLoader.load(getClass().getResource("/Modules/Application/Resources/Views/ApplicationView.fxml"), trans);
+            Scene scene = new Scene(page);
+            setTray(stage, propertiesBuild.getProperty("title"));
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.setTitle(String.format("%1$s - v%2$s", propertiesBuild.getProperty("title"), propertiesBuild.getProperty("version")));
+            stage.getIcons().add(new Image(getClass().getResourceAsStream("/Modules/Application/Resources/Assets/Images/app_icon.png")));
+            stage.show();
+            rubAutoBackupDB();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            logger.fatal(e);
+        }
     }
 }
