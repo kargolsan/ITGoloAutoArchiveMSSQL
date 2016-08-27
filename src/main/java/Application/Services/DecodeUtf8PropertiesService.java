@@ -1,10 +1,10 @@
 package Application.Services;
 
-import java.io.UnsupportedEncodingException;
-import java.util.Enumeration;
 import java.util.Locale;
-import java.util.PropertyResourceBundle;
+import java.util.Enumeration;
 import java.util.ResourceBundle;
+import java.util.PropertyResourceBundle;
+import java.io.UnsupportedEncodingException;
 
 /**
  * Created by IntelliJ IDEA.
@@ -12,7 +12,7 @@ import java.util.ResourceBundle;
  * Date: 19.08.2016
  * Time: 18:03
  */
-public class PropertiesUtf8DecodeService {
+public class DecodeUtf8PropertiesService {
     /**
      * Gets the unicode friendly resource bundle
      *
@@ -21,7 +21,6 @@ public class PropertiesUtf8DecodeService {
      * @return Unicode friendly resource bundle
      */
     public static final ResourceBundle getBundle(final String baseName, final Locale locale) {
-
         return createUtf8PropertyResourceBundle(
                 ResourceBundle.getBundle(baseName, locale));
     }

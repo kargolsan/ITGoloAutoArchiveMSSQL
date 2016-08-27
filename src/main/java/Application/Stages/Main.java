@@ -1,124 +1,65 @@
 package Application.Stages;
 
-import Application.Classes.Async;
-import Application.Services.ApplicationService;
-import Application.Services.LanguageService;
-import Application.Services.LoaderService;
+import Application.Services.*;
 import javafx.stage.Stage;
-import javafx.scene.Scene;
 import java.io.IOException;
 import java.util.Properties;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.image.Image;
-import javafx.scene.layout.VBox;
+import javafx.stage.StageStyle;
 import java.util.ResourceBundle;
+import Application.Classes.Async;
 import Modules.Trays.Models.Tray;
 import Modules.Trays.Interfaces.ITray;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
-import Modules.Database.Models.SessionService;
 import Modules.Translations.Models.Translation;
 import Modules.MSSQL.Interfaces.IBackupDBController;
 import Modules.MSSQL.Controllers.BackupDBController;
 
 /**
- * Created by Karol Golec on 05.08.2016.
+ * Created by IntelliJ IDEA.
+ * User: Karol Golec
+ * Date: Aug 17, 2016
+ * Time: 11:15:10 AM
  */
 public class Main extends javafx.application.Application {
 
+    /** Stage icon */
+    private static final String ICON = "/Application/Resources/Assets/Images/Icons/app.png";
 
-    /**
-     * logger for this class
-     */
-    private static Logger logger = LogManager.getLogger();
+    /** Path to stage view */
+    private static final String VIEW = "/Modules/Application/Resources/Views/ApplicationView.fxml";
 
-    /**
-     * properties of build
-     */
-    Properties propertiesBuild;
+    /** Path to language application*/
+    private static final String LANGUAGE = "Modules/Application/Resources/Languages/application";
 
-    /**
-     * Resource bundle of translations
-     */
-    ResourceBundle trans;
-
-    /**
-     * Constructor of class
-     */
-    public Main() {
-        propertiesBuild = new Properties();
-        try {
-            propertiesBuild.load(getClass().getClassLoader().getResourceAsStream("Application/Resources/Properties/application.properties"));
-        } catch (IOException ex) {
-            logger.fatal(ex.getMessage());
-        }
-
-        trans = new Translation().getResourceBundle("Modules/Application/Resources/Languages/application");
-    }
+    /** Path to properties application */
+    private static final String PROPERTIES = "Application/Resources/Properties/application.properties";
 
     /**
      * The main entry point for all JavaFX applications.
      * The start method is called after the init method has returned,
      * and after the system is ready for the application to begin running.
      *
-     * @param stage the primary stage for this application, onto which
-     *                     the application scene can be set. The primary stage will be embedded in
-     *                     the browser if the application was launched as an applet.
-     *                     Applications may create other stages, if needed, but they will not be
-     *                     primary stages and will not be embedded in the browser.
+     * @param stage the primary stage for this application
      */
+    @Override
     public void start(Stage stage) throws Exception {
         new Async().run(()->{
             LoaderService.load();
         },()->{
             createStage(stage);
+            IBackupDBController backupDB = new BackupDBController();
+            backupDB.run();
         });
     }
 
     /**
      * This method is called when the application should stop, and provides a
      * convenient place to prepare for application exit and destroy resources.
-     * <p>
-     * <p>
-     * The implementation of this method provided by the Application class does nothing.
-     * </p>
-     * <p>
-     * <p>
-     * NOTE: This method is called on the JavaFX Application Thread.
-     * </p>
      */
+    @Override
     public void stop() throws Exception {
-        stopAutoBackupDB();
-        SessionService.close();
-    }
-
-    /**
-     * Run auto archive for database
-     */
-    private void rubAutoBackupDB() {
-        IBackupDBController backupDB = new BackupDBController();
-        backupDB.run();
-    }
-
-    /**
-     * Stop auto archive for database
-     */
-    private void stopAutoBackupDB() {
-        IBackupDBController backupDB = new BackupDBController();
-        backupDB.stop();
-    }
-
-    /**
-     * Set tray for the application
-     *
-     * @param primaryStage of the main view
-     * @param title        for view of application
-     */
-    private void setTray(Stage primaryStage, String title) {
-        ITray tray = new Tray();
-        tray.setIcon("/Modules/Application/Resources/Assets/Images/app_icon.png");
-        tray.setTitle(title);
-        tray.include(primaryStage);
+        ApplicationService.exit();
     }
 
     /**
@@ -127,20 +68,9 @@ public class Main extends javafx.application.Application {
      * @param stage of main
      */
     public void createStage(Stage stage){
-        try {
-            VBox page = FXMLLoader.load(getClass().getResource("/Modules/Application/Resources/Views/ApplicationView.fxml"), trans);
-            Scene scene = new Scene(page);
-            setTray(stage, propertiesBuild.getProperty("title"));
-            stage.setScene(scene);
-            stage.setResizable(false);
-            stage.setTitle(String.format("%1$s - v%2$s", propertiesBuild.getProperty("title"), propertiesBuild.getProperty("version")));
-            stage.getIcons().add(new Image(getClass().getResourceAsStream("/Modules/Application/Resources/Assets/Images/app_icon.png")));
-            stage.show();
-            rubAutoBackupDB();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            logger.fatal(e);
-        }
+        String title = PropertiesService.get("title", PROPERTIES);
+        TrayService.setTray(stage, title, ICON, "Application/Resources/Languages/application");
+        stage.setTitle(String.format("%1$s - v%2$s", title, PropertiesService.get("version", PROPERTIES)));
+        StageService.show(stage, VIEW, LANGUAGE, StageStyle.DECORATED, ICON);
     }
 }

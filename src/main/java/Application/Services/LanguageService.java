@@ -18,18 +18,7 @@ public class LanguageService {
      * @return resource bundle
      */
     public static ResourceBundle getResourceBundle(String bundleResource) {
-
         Locale locale = Locale.getDefault();
-        ResourceBundle resource;
-
-        try {
-            resource = PropertiesUtf8DecodeService.getBundle(bundleResource, locale);
-            return resource;
-        } catch (Exception e)
-        {
-            e.printStackTrace();
-        }
-
-        return null;
+        return DecodeUtf8PropertiesService.getBundle(bundleResource, locale);
     }
 }

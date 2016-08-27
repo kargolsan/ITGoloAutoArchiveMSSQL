@@ -1,4 +1,6 @@
-import Application.Controllers.MainController;
+import Application.Stages.Main;
+import Application.Stages.Loader;
+import com.sun.javafx.application.LauncherImpl;
 
 /**
  * Created by IntelliJ IDEA.
@@ -14,6 +16,6 @@ public class start {
      * @param args
      */
     public static void main(String[] args) {
-        MainController.launch(args);
+        LauncherImpl.launchApplication(Main.class, Loader.class, args);
     }
 }

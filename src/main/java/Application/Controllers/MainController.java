@@ -1,14 +1,9 @@
 package Application.Controllers;
 
 import java.net.URL;
-
-import Application.Stages.Loader;
-import Application.Stages.Main;
-import com.sun.javafx.application.LauncherImpl;
-import javafx.fxml.FXML;
 import java.util.ResourceBundle;
+import Application.Stages.Loader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 
 /**
  * Created by IntelliJ IDEA.
@@ -30,12 +25,4 @@ public class MainController implements Initializable {
         Loader.hide();
     }
 
-    /**
-     * Launch main stage with loader view
-     *
-     * @param args arguments when the program starts
-     */
-    public static void launch(String[] args){
-        LauncherImpl.launchApplication(Main.class, Loader.class, args);
-    }
 }

@@ -1,15 +1,14 @@
 package Application.Stages;
 
-import Application.Services.LanguageService;
-import Application.Services.LoaderService;
-import javafx.application.Platform;
-import javafx.application.Preloader;
-import javafx.fxml.FXMLLoader;
+import Application.Services.StageService;
+import javafx.stage.Stage;
 import javafx.scene.Scene;
+import javafx.fxml.FXMLLoader;
+import javafx.stage.StageStyle;
 import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
+import javafx.application.Preloader;
+import Application.Services.LanguageService;
 
 /**
  * Created by IntelliJ IDEA.
@@ -19,10 +18,8 @@ import javafx.stage.StageStyle;
  */
 public class Loader extends Preloader {
 
-    /**
-     * Stage loader view
-     */
-    private static Stage stage;
+    /** Stage icon */
+    private static final String ICON = "/Application/Resources/Assets/Images/Icons/app.png";
 
     /** Path to stage view */
     private static final String VIEW = "/Application/Resources/Views/LoaderView.fxml";
@@ -30,18 +27,8 @@ public class Loader extends Preloader {
     /** Path to language application*/
     private static final String LANGUAGE = "Application/Resources/Languages/application";
 
-    /** Stage icon */
-    private static final String ICON = "/Application/Resources/Assets/Images/Icons/app.png";
-
-    /** Get stage of view */
-    public static Stage getStage() {
-        return stage;
-    }
-
-    /** Set stage of view */
-    public static void setStage(Stage stage) {
-        Loader.stage = stage;
-    }
+    /** Stage */
+    private static Stage stage;
 
     /**
      * The main entry point for all JavaFX applications.
@@ -50,31 +37,9 @@ public class Loader extends Preloader {
      *
      * @param stage main of application
      */
-    public void start(Stage stage) {
-        setStage(stage);
-        try {
-            VBox page = FXMLLoader.load(getClass().getResource(VIEW), LanguageService.getResourceBundle(LANGUAGE));
-            Scene scene = new Scene(page);
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.setScene(scene);
-            stage.getIcons().add(new Image(getClass().getResourceAsStream(ICON)));
-            stage.show();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * Handle stage change notification
-     *
-     * @param stateChangeNotification
-     */
     @Override
-    public void handleStateChangeNotification(StateChangeNotification stateChangeNotification) {
-        if (stateChangeNotification.getType() == StateChangeNotification.Type.BEFORE_START) {
-            //Loader.stage.hide();
-        }
+    public void start(Stage stage) {
+        this.stage = StageService.show(stage, VIEW, LANGUAGE, StageStyle.UNDECORATED, ICON);
     }
 
     /**
