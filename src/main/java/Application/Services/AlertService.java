@@ -25,9 +25,14 @@ public class AlertService {
     private static final String ICON_ERROR = "/Application/Resources/Assets/Images/Icons/error_20.png";
 
     /**
-     * Icon for alert error
+     * Icon for alert warning
      */
     private static final String ICON_WARNING = "/Application/Resources/Assets/Images/Icons/warning_20.png";
+
+    /**
+     * Icon for alert info
+     */
+    private static final String ICON_INFO = "/Application/Resources/Assets/Images/Icons/info_20.png";
 
     /**
      * Show alert error with details of exception
@@ -87,6 +92,23 @@ public class AlertService {
         alert.setContentText(content);
         Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
         stage.getIcons().add(new Image(AlertService.class.getResourceAsStream(ICON_WARNING)));
+        alert.showAndWait();
+    }
+
+    /**
+     * Show information alert
+     *
+     * @param content body of alert
+     * @param header for content
+     * @param title of alert
+     */
+    public static void info(String content, String header, String title){
+        Alert alert = new javafx.scene.control.Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+        stage.getIcons().add(new Image(AlertService.class.getResourceAsStream(ICON_INFO)));
         alert.showAndWait();
     }
 }

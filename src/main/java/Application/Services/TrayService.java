@@ -1,6 +1,8 @@
 package Application.Services;
 
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.net.URL;
 import javafx.stage.Stage;
 import java.util.ResourceBundle;
@@ -30,11 +32,11 @@ public class TrayService {
 
         ResourceBundle resources = LanguageService.getResourceBundle(languagePath);
 
-        setApplication(stage);
+        setApplication(stage, resources);
 
         TrayIcon trayIcon = new TrayIcon(getIcon(iconPath), title, createMenuPopup(stage, resources));
 
-        embedTray(trayIcon);
+        embedTray(trayIcon, stage);
     }
 
     /**
@@ -109,8 +111,20 @@ public class TrayService {
      * Embed tray to system icons in tray
      *
      * @param trayIcon also string
+     * @param stage also window
      */
-    private static void embedTray(TrayIcon trayIcon){
+    private static void embedTray(TrayIcon trayIcon, Stage stage){
+        // hide and show when click right mouse to tray
+        trayIcon.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                if (e.getButton() == MouseEvent.BUTTON1 && !stage.isShowing()) {
+                    showApplication(stage);
+                } else if (e.getButton() == MouseEvent.BUTTON1 && stage.isShowing()) {
+                    hideApplication(stage);
+                }
+            }
+        });
+
         trayIcon.setImageAutoSize(true);
         SystemTray tray = SystemTray.getSystemTray();
         try {
@@ -124,11 +138,17 @@ public class TrayService {
      * Set application for tray
      *
      * @param stage of application
+     * @param resources also bundle with language
      */
-    private static void setApplication(Stage stage){
+    private static void setApplication(Stage stage, ResourceBundle resources){
         Platform.setImplicitExit(false);
 
         stage.setOnCloseRequest(m -> {
+            AlertService.info(
+                    resources.getString("tray_service.alert.application_has_been_hidden_task_bar"),
+                    null,
+                    resources.getString("tray_service.alert.information")
+            );
             hideApplication(stage);
         });
     }

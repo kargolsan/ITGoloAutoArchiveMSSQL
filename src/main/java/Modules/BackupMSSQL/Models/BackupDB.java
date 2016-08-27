@@ -1,28 +1,22 @@
 package Modules.BackupMSSQL.Models;
 
-import java.io.IOException;
 import java.sql.*;
-import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.List;
-
-import Application.Services.LanguageService;
-import Application.Services.DateTimeService;
-import Modules.Files.Interfaces.ICompression;
-import Modules.Files.Interfaces.IOperations;
-import Application.Services.CompressionFileService;
-import Application.Services.FileOperationsService;
-import org.apache.logging.log4j.Logger;
+import java.io.IOException;
+import java.util.ResourceBundle;
 import Modules.Tasks.Models.Hour;
 import Modules.Tasks.Models.Task;
-import Modules.Tasks.Repositories.TaskRepository;
-import org.apache.logging.log4j.LogManager;
 import Modules.Tasks.Models.DayOfWeek;
-import Modules.Tasks.Interfaces.ITaskFactory;
-import Modules.BackupMSSQL.Interfaces.IDatabase;
-import Modules.Translations.Models.Translation;
-import Modules.Application.Interfaces.ILogService;
+import org.apache.logging.log4j.Logger;
 import Modules.Logs.Services.LogService;
+import org.apache.logging.log4j.LogManager;
+import Application.Services.DateTimeService;
+import Application.Services.LanguageService;
+import Modules.BackupMSSQL.Interfaces.IDatabase;
+import Modules.Tasks.Repositories.TaskRepository;
+import Application.Services.FileOperationsService;
+import Application.Services.CompressionFileService;
 
 /**
  * Created by Karol Golec on 10.08.2016.
