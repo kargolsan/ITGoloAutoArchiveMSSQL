@@ -2,18 +2,12 @@ package Application.Stages;
 
 import Application.Services.*;
 import javafx.stage.Stage;
-import java.io.IOException;
-import java.util.Properties;
 import javafx.stage.StageStyle;
-import java.util.ResourceBundle;
 import Application.Classes.Async;
 import Modules.Trays.Models.Tray;
 import Modules.Trays.Interfaces.ITray;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
-import Modules.Translations.Models.Translation;
-import Modules.MSSQL.Interfaces.IBackupDBController;
-import Modules.MSSQL.Controllers.BackupDBController;
+import Modules.BackupMSSQL.Interfaces.IBackupDBController;
+import Modules.BackupMSSQL.Controllers.BackupDBController;
 
 /**
  * Created by IntelliJ IDEA.
@@ -27,10 +21,10 @@ public class Main extends javafx.application.Application {
     private static final String ICON = "/Application/Resources/Assets/Images/Icons/app.png";
 
     /** Path to stage view */
-    private static final String VIEW = "/Modules/Application/Resources/Views/ApplicationView.fxml";
+    private static final String VIEW = "/Modules/Tasks/Resources/Views/ApplicationView.fxml";
 
-    /** Path to language application*/
-    private static final String LANGUAGE = "Modules/Application/Resources/Languages/application";
+    /** Path to language tray*/
+    private static final String LANGUAGE = "Application/Resources/Languages/application";
 
     /** Path to properties application */
     private static final String PROPERTIES = "Application/Resources/Properties/application.properties";
@@ -69,7 +63,7 @@ public class Main extends javafx.application.Application {
      */
     public void createStage(Stage stage){
         String title = PropertiesService.get("title", PROPERTIES);
-        TrayService.setTray(stage, title, ICON, "Application/Resources/Languages/application");
+        TrayService.setTray(stage, title, ICON, LANGUAGE);
         stage.setTitle(String.format("%1$s - v%2$s", title, PropertiesService.get("version", PROPERTIES)));
         StageService.show(stage, VIEW, LANGUAGE, StageStyle.DECORATED, ICON);
     }

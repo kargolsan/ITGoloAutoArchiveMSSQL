@@ -1,9 +1,9 @@
 package Application.Services;
 
 import javafx.application.Platform;
-import Modules.Database.Models.SessionService;
-import Modules.MSSQL.Interfaces.IBackupDBController;
-import Modules.MSSQL.Controllers.BackupDBController;
+import Database.Services.SessionService;
+import Modules.BackupMSSQL.Interfaces.IBackupDBController;
+import Modules.BackupMSSQL.Controllers.BackupDBController;
 
 /**
  * Created by IntelliJ IDEA.

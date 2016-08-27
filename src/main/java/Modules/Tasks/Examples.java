@@ -3,38 +3,36 @@ package Modules.Tasks;
 import java.util.Set;
 import java.util.List;
 import java.util.HashSet;
-import Modules.Tasks.Models.TaskEntity;
-import Modules.Tasks.Models.HourEntity;
-import Modules.Tasks.Models.TaskFactory;
-import Modules.Tasks.Models.DayOfWeekEntity;
-import Modules.Tasks.Interfaces.ITaskFactory;
-
+import Modules.Tasks.Models.Task;
+import Modules.Tasks.Models.Hour;
+import Modules.Tasks.Repositories.TaskRepository;
+import Modules.Tasks.Models.DayOfWeek;
 /**
  * Created by Karol Golec on 05.08.2016.
  */
 public class Examples {
     public void examples(){
-        DayOfWeekEntity dayOfWeek1 = new DayOfWeekEntity();
+        DayOfWeek dayOfWeek1 = new DayOfWeek();
         dayOfWeek1.setDayOfWeek(1);
-        DayOfWeekEntity dayOfWeek2 = new DayOfWeekEntity();
+        DayOfWeek dayOfWeek2 = new DayOfWeek();
         dayOfWeek2.setDayOfWeek(2);
 
-        HourEntity hour1 = new HourEntity();
+        Hour hour1 = new Hour();
         hour1.setHour(11);
-        HourEntity hour2 = new HourEntity();
+        Hour hour2 = new Hour();
         hour2.setHour(2);
 
-        Set<DayOfWeekEntity> daysOfWeekOfTask = new HashSet<DayOfWeekEntity>();
+        Set<DayOfWeek> daysOfWeekOfTask = new HashSet<DayOfWeek>();
         daysOfWeekOfTask.add(dayOfWeek1);
         daysOfWeekOfTask.add(dayOfWeek2);
 
-        Set<HourEntity> hoursOfTask = new HashSet<HourEntity>();
+        Set<Hour> hoursOfTask = new HashSet<Hour>();
         hoursOfTask.add(hour1);
         hoursOfTask.add(hour2);
 
-        ITaskFactory taskFactory = new TaskFactory();
+        TaskRepository taskFactory = new TaskRepository();
 
-        TaskEntity task = new TaskEntity();
+        Task task = new Task();
         task.setServer("server");
         task.setInstance("instance");
         task.setDatabase("database");
@@ -54,15 +52,15 @@ public class Examples {
 
         //taskFactory.update(taskUpdate);
 
-        List<TaskEntity> tasks = taskFactory.getAll();
+        List<Task> tasks = taskFactory.getAll();
 
-        for(TaskEntity taskget : tasks){
+        for(Task taskget : tasks){
             System.out.println(taskget.getId());
             System.out.println(taskget.getServer());
 
-            Set<DayOfWeekEntity> days = taskget.getDaysOfWeek();
+            Set<DayOfWeek> days = taskget.getDaysOfWeek();
 
-            for (DayOfWeekEntity day : days){
+            for (DayOfWeek day : days){
                 System.out.println("Day: " + day.getDayOfWeek());
             }
         }

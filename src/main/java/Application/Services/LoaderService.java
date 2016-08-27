@@ -1,7 +1,7 @@
 package Application.Services;
 
 import java.util.ResourceBundle;
-import Modules.Database.Models.SessionService;
+import Database.Services.SessionService;
 import Database.Exceptions.LockFileDatabaseException;
 
 /**
@@ -11,11 +11,6 @@ import Database.Exceptions.LockFileDatabaseException;
  * Time: 10:33
  */
 public class LoaderService {
-
-    /**
-     * Icon for alert error exception
-     */
-    private static final String ICON_ERROR_EXCEPTION = "/Application/Resources/Assets/Images/Icons/error_20.png";
 
     /**
      * Create session of database for
@@ -34,8 +29,7 @@ public class LoaderService {
                     resources.getString("loader_service.your_database_is_open"),
                     resources.getString("loader_service.find_instance_application_and_close"),
                     e,
-                    resources,
-                    ICON_ERROR_EXCEPTION
+                    resources
             );
         } catch (Exception e) {
             AlertService.errorException(
@@ -43,8 +37,7 @@ public class LoaderService {
                     resources.getString("loader_service.unexpected_error"),
                     resources.getString("loader_service.application_has_unexpected_error"),
                     e,
-                    resources,
-                    ICON_ERROR_EXCEPTION
+                    resources
             );
         }
         return false;

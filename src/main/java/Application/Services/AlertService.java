@@ -20,6 +20,16 @@ import javafx.scene.control.TextArea;
 public class AlertService {
 
     /**
+     * Icon for alert error
+     */
+    private static final String ICON_ERROR = "/Application/Resources/Assets/Images/Icons/error_20.png";
+
+    /**
+     * Icon for alert error
+     */
+    private static final String ICON_WARNING = "/Application/Resources/Assets/Images/Icons/warning_20.png";
+
+    /**
      * Show alert error with details of exception
      *
      * @param title alert
@@ -27,9 +37,8 @@ public class AlertService {
      * @param content alert
      * @param ex exception for alert
      * @param resources with bundle
-     * @param iconPath alert dialog
      */
-    public static void errorException(String title, String header, String content, Exception ex, ResourceBundle resources, String iconPath){
+    public static void errorException(String title, String header, String content, Exception ex, ResourceBundle resources){
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);
         alert.setHeaderText(header);
@@ -59,8 +68,25 @@ public class AlertService {
         alert.getDialogPane().setExpandableContent(expContent);
 
         Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-        stage.getIcons().add(new Image(AlertService.class.getResourceAsStream(iconPath)));
+        stage.getIcons().add(new Image(AlertService.class.getResourceAsStream(ICON_ERROR)));
 
+        alert.showAndWait();
+    }
+
+    /**
+     * Show warning alert
+     *
+     * @param content body of alert
+     * @param header for content
+     * @param title of alert
+     */
+    public static void warning(String content, String header, String title){
+        Alert alert = new javafx.scene.control.Alert(Alert.AlertType.WARNING);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+        stage.getIcons().add(new Image(AlertService.class.getResourceAsStream(ICON_WARNING)));
         alert.showAndWait();
     }
 }

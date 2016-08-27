@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.collections.FXCollections?>
+
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="350.0" prefWidth="485.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" stylesheets="@/Modules/Tasks/Resources/Assets/Css/logs.css" fx:controller="Modules.Logs.Controllers.LogsController">
+    <children>
+      <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+              <TableView fx:id="tableLogs">
+                  <columns>
+                      <TableColumn id="created_at" fx:id="itemCreatedAt" editable="false" prefWidth="150.0" text="%view.application.tabs.logs.create_at"/>
+                      <TableColumn id="level" fx:id="itemLevel" editable="false" text="%view.application.tabs.logs.level"/>
+                      <TableColumn id="message" fx:id="itemMessage" editable="false" prefWidth="400.0" text="%view.application.tabs.logs.message"/>
+                  </columns>
+              </TableView>
+            <Button mnemonicParsing="false" onAction="#clear" text="%view.application.tabs.logs.clear" />
+         </children>
+      </VBox>
+    </children>
+</AnchorPane>
